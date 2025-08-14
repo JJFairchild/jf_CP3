@@ -1,49 +1,59 @@
-#Jonas Fairchild, Quiz Game
+# Jonas Fairchild, Quiz Game
 
-import os
+import os # Import modules
 import csv
 import time
 
-import tkinter as tk
+import tkinter as tk # Set up tkinter
 root = tk.Tk()
 root.title("Quiz Game")
 root.geometry("400x100")
 
+answer1 = tk.Button(root) # Create widgets
+answer2 = tk.Button(root)
+answer3 = tk.Button(root)
+answer4 = tk.Button(root)
+text = tk.Label(root)
 
-question_list = []
+answer1.pack(padx=20, pady=20, side="left") # Adds widgets to screen
+answer2.pack(padx=20, side="left")
+answer3.pack(padx=20, side="left")
+answer4.pack(padx=20, side="left")
+text.pack(pady=10)
+
+question_list = {}
 
 with open("Quiz Game/questions.csv", "r", newline='') as file:
     questions = csv.reader(file)
     next(questions)
     for question in questions:
-        question_list.append(question)
+        if len(question)==1:
+            type=question[0]
+            question_list[type] = []
+        else:
+            question_list[type].append(question)
 
 def ask_question(question):
 
     def check_correct(answer):
-        answer1.destroy()
-        answer2.destroy()
-        answer3.destroy()
-        answer4.destroy()
+        answer1.pack_forget()
+        answer2.pack_forget()
+        answer3.pack_forget()
+        answer4.pack_forget()
         if answer==question[5]:
-            questionlabel.config(text="Correct!")
+            text.config(text="Correct!")
         else:
-            questionlabel.config(text="Not quite!")
+            text.config(text="Not quite!")
         root.update()
         time.sleep(1)
     
-    questionlabel = tk.Label(root, text=question[0])
-    questionlabel.pack(pady=10)
-
-    answer1 = tk.Button(root, text=question[1], command=lambda: check_correct(1))
-    answer2 = tk.Button(root, text=question[2], command=lambda: check_correct(2))
-    answer3 = tk.Button(root, text=question[3], command=lambda: check_correct(3))
-    answer4 = tk.Button(root, text=question[4], command=lambda: check_correct(4))
-
-    answer1.pack(padx=20, pady=20, side="left")
-    answer2.pack(padx=20, side="left")
-    answer3.pack(padx=20, side="left")
-    answer4.pack(padx=20, side="left")
+    answer1.config(text=question[1], command=lambda: check_correct(1))
+    answer2.config(text=question[2], command=lambda: check_correct(2))
+    answer3.config(text=question[3], command=lambda: check_correct(3))
+    answer4.config(text=question[4], command=lambda: check_correct(4))
+    text.config(text=question[0])
+    root.update()
+    
 
 def question_game():
     while True:

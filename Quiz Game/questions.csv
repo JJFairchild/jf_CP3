@@ -1,4 +1,5 @@
-Question,Answer 1,Answer 2,Answer 3,Answer 4
+Question,Answer 1,Answer 2,Answer 3,Answer 4,Correct answer #
+General Knowledge
 What is the capital of Australia?,Sydney,Melbourne,Canberra,Perth,3
 What is the largest planet in our solar system?,Earth,Saturn,Jupiter,Mars,3
 Who wrote "Romeo and Juliet"?,Charles Dickens,William Shakespeare,Jane Austen,Mark Twain,2
@@ -9,6 +10,7 @@ What is the human body's largest organ?,Liver,Skin,Brain,Lung,2
 Which element has the atomic number 1?,Oxygen,Nitrogen,Helium,Hydrogen,4
 Which ocean is the largest?,Atlantic,Arctic,Indian,Pacific,4
 Who painted the Mona Lisa?,Vincent Van Gogh,Pablo Picasso,Leonardo da Vinci,Claude Monet,3
+Science
 What gas do plants absorb from the atmosphere?,Oxygen,Carbon Dioxide,Nitrogen,Hydrogen,2
 How many bones are in the adult human body?,206,201,256,198,1
 What part of the plant conducts photosynthesis?,Roots,Leaves,Stems,Flowers,2
@@ -19,6 +21,7 @@ What’s the boiling point of water at sea level?,90°C,80°C,100°C,120°C,3
 What is the hardest natural substance?,Iron,Diamond,Quartz,Titanium,2
 Which blood type is known as the universal donor?,AB+,O+,O-,A-,3
 How many planets are in our solar system?,9,8,7,10,2
+History
 Who was the first President of the United States?,Thomas Jefferson,Abraham Lincoln,George Washington,John Adams,3
 What ancient civilization built the pyramids?,Greeks,Romans,Egyptians,Mayans,3
 In what year did the Titanic sink?,1905,1912,1921,1898,2
@@ -29,6 +32,7 @@ Who was the British Prime Minister during WWII?,Tony Blair,Margaret Thatcher,Win
 Where did the Industrial Revolution begin?,Germany,USA,France,Britain,4
 Who was assassinated in Sarajevo in 1914?,Napoleon,Archduke Franz Ferdinand,Joseph Stalin,Adolf Hitler,2
 What year did the Berlin Wall fall?,1989,1991,1985,1995,1
+Literature/art
 Who wrote "1984"?,George Orwell,Aldous Huxley,Ernest Hemingway,J.K. Rowling,1
 What is the name of Sherlock Holmes’ assistant?,Watson,Lestrade,Moriarty,Hudson,1
 What is the main language of Shakespeare's works?,Latin,Middle English,Early Modern English,French,3
@@ -39,6 +43,7 @@ Who wrote "Pride and Prejudice"?,Charlotte Brontë,Jane Austen,Emily Brontë,Mar
 What is the term for a 14-line poem?,Ode,Haiku,Sonnet,Ballad,3
 Which of these is a play by Sophocles?,Medea,Antigone,Lysistrata,The Bacchae,2
 What art style is Salvador Dalí known for?,Cubism,Surrealism,Impressionism,Realism,2
+Technology
 What does CPU stand for?,Central Programming Unit,Central Processing Unit,Computer Personal Unit,Control Processing Utility,2
 Who founded Microsoft?,Steve Jobs,Bill Gates,Larry Page,Mark Zuckerberg,2
 What does HTML stand for?,HyperText Makeup Language,HighText Markup Language,HyperText Markup Language,Hyper Tool Markup Language,3
