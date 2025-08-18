@@ -1,32 +1,40 @@
 import tkinter as tk
-from tkinter import scrolledtext
+from tkinter import messagebox
 
 root = tk.Tk()
 root.title("Chat Box")
+root.geometry("400x300")
 
-# Chat display area with scroll
-chat_display = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=50, height=15, state='disabled')
-chat_display.pack(padx=10, pady=10)
+def get_category(questions):
+    category = tk.StringVar()
 
-# Input field
-chat_input = tk.Entry(root, width=40)
-chat_input.pack(side="left", padx=(10, 0), pady=(0, 10))
+    categories = ""
+    for i in questions:
+        categories +=("\n" + i)
 
-# Send button
-def send_message():
-    message = chat_input.get().strip()
-    if message:
-        # Enable text box to insert message
-        chat_display.config(state='normal')
-        chat_display.insert(tk.END, "You: " + message + "\n")
-        chat_display.config(state='disabled')
-        chat_display.yview(tk.END)  # Scroll to bottom
-        chat_input.delete(0, tk.END)
+    catlabel = tk.Label(text="Select category to play:" + categories)
+    catlabel.pack()
 
-send_button = tk.Button(root, text="Send", command=send_message)
-send_button.pack(side="left", padx=10, pady=(0, 10))
+    cat_input = tk.Entry(root, width=40)
+    cat_input.pack(padx=25, side="left")
+    cat_input.bind("<Return>", lambda event: accept_msg())
 
-# Optional: bind Enter key to send
-chat_input.bind("<Return>", lambda event: send_message())
+    def accept_msg():
+        message = cat_input.get().strip()
+        if questions.get(message.capitalize()):
+            category.set(message.capitalize())
+        else:
+            messagebox.showerror("Error","That's not an item on the list. Try again.")
+    
+    send_button = tk.Button(root, text="Accept", command=lambda: accept_msg())
+    send_button.pack(padx=25, side="left")
+
+    root.wait_variable(category)
+
+    catlabel.destroy()
+    cat_input.destroy()
+    send_button.destroy()
+
+get_category({"Category": [[]]})
 
 root.mainloop()
