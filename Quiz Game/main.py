@@ -1,17 +1,18 @@
 # Jonas Fairchild, Quiz Game
 
-import os # Import modules
-import csv
+import csv # Import modules
 import time
+import random
 
 import tkinter as tk # Set up tkinter
+from tkinter import messagebox
 root = tk.Tk()
 root.title("Quiz Game")
-root.geometry("400x100")
+root.geometry("400x300")
 
 question_list = {}
 
-with open("Quiz Game/questions.csv", "r", newline='') as file:
+with open("Quiz Game/questions.csv", "r", newline='') as file: # Gets the csv file into question_list
     questions = csv.reader(file)
     next(questions)
     for question in questions:
@@ -59,49 +60,35 @@ def ask_question(question):
 
     return correct.get() # Returns the value of 'correct' for score keeping.
 
-def question_game():
-    while True:
-        os.system('cls')
-        match input("Select a game mode.\n1. Random Questions\n2. General Knowledge\n3. Science\n4. History\n5. Literature/art\n6. Technology"):
-            case "1":
-                pass
-            case "2":
-                pass
-            case "3":
-                break
-            case _:
-                print("That's not a valid input. Try again.")
-        input("Done reading?: ")
+def get_category(questions):
+    category = tk.StringVar()
 
-def play_game(): # Main function, runs the whole program
+    categories = ""
+    for i in questions:
+        categories +=("\n" + i)
 
-    def run_main_function(command): # Function that decides what other function to run
+    catlabel = tk.Label(text="Select category to play:" + categories)
+    catlabel.pack()
 
-        # Cleans up widgets
-        gamelabel.destroy()
-        make.destroy
-        play.destroy()
-        quit.destroy
+    cat_input = tk.Entry(root, width=40)
+    cat_input.pack(padx=25, side="left")
+    cat_input.bind("<Return>", lambda event: accept_msg())
 
-        match command:
-            case 0:
-                pass # Runs question maker function
-            case 1:
-                pass # Runs play_game() function
-            case 2:
-                root.destroy()
+    def accept_msg():
+        message = cat_input.get().strip()
+        if questions.get(message.capitalize()):
+            category.set(message.capitalize())
+        else:
+            messagebox.showerror("Error","That's not an item on the list. Try again.")
     
-    #Creates widgets
-    gamelabel = tk.Label(text="Quiz Game")
-    make = tk.Button(root, text="Make Questions", command=lambda: run_main_function(0))
-    play = tk.Button(root, text="Play", command=lambda: run_main_function(1))
-    quit = tk.Button(root, text="Quit Game", command=lambda: run_main_function(2))
+    send_button = tk.Button(root, text="Accept", command=lambda: accept_msg())
+    send_button.pack(padx=25, side="left")
 
-    # Adds widgets to screen
-    gamelabel.pack(pady=10)
-    make.pack(padx=30, pady=20, side="left")
-    play.pack(padx=30, side="left")
-    quit.pack(padx=30, side="left")
+    root.wait_variable(category)
+
+    catlabel.destroy()
+    cat_input.destroy()
+    send_button.destroy()
 
 def main(): # Main function, runs the whole program
 
@@ -116,7 +103,10 @@ def main(): # Main function, runs the whole program
             case 0:
                 pass # Runs question maker function
             case 1:
-                pass # Runs play_game() function
+                category = get_category(questions)
+                score = 0
+                count = 0
+                score += ask_question(random.choice(category))
             case 2:
                 root.destroy()
     
