@@ -23,7 +23,17 @@ with open("Quiz Game/questions.csv", "r", newline='') as file: # Gets the csv fi
         else:
             questions[type].append(question)
 
-def ask_question(question):
+def ask_question(question): # Function to ask the user a specific question
+
+    ques_answers = [] # Shuffles the answers
+    for i in range(1, 5):
+        ques_answers.append(question[i])
+    ques_answers = random.shuffle(ques_answers)
+
+    ques_copy = copy.copy(question)
+    for i in range(1, 5):
+        ques_copy[i] = ques_answers[i-1]
+
     correct = tk.IntVar()
 
     def check_correct(answer):
@@ -73,10 +83,11 @@ def ask_question(question):
 def get_category(questions):
     category = tk.StringVar()
 
-    categories = ""
+    categories = "" # Shows all the available categories
     for i in questions:
         categories +=("\n" + i)
 
+    # Set up widgets
     catlabel = tk.Label(pady=20, text="Select category to play:" + categories)
     catlabel.pack()
 
@@ -84,18 +95,19 @@ def get_category(questions):
     cat_input.pack(padx=25, side="left")
     cat_input.bind("<Return>", lambda event: accept_msg())
 
-    def accept_msg():
+    def accept_msg(): # Function for the message box to call when pressed.
         message = cat_input.get().strip()
         if questions.get(message.capitalize()):
             category.set(message.capitalize())
         else:
             messagebox.showerror("Error","That's not an item on the list. Try again.")
     
-    send_button = tk.Button(root, text="Accept", command=lambda: accept_msg())
+    send_button = tk.Button(root, text="Accept", command=lambda: accept_msg()) # Button to press as an alternative to the enter key.
     send_button.pack(padx=25, side="left")
 
-    root.wait_variable(category)
+    root.wait_variable(category) # Waits for a category to be selected
 
+    # Cleans up widgets
     catlabel.destroy()
     cat_input.destroy()
     send_button.destroy()
