@@ -3,62 +3,72 @@
 import csv # Import modules
 import time
 import random
+import copy
 
 import tkinter as tk # Set up tkinter
 from tkinter import messagebox
 root = tk.Tk()
 root.title("Quiz Game")
-root.geometry("400x300")
+root.geometry("400x200")
 
-question_list = {}
+questions = {}
 
-with open("Quiz Game/questions.csv", "r", newline='') as file: # Gets the csv file into question_list
-    questions = csv.reader(file)
-    next(questions)
-    for question in questions:
+with open("Quiz Game/questions.csv", "r", newline='') as file: # Gets the csv file into 'questions'
+    questioncsv = csv.reader(file)
+    next(questioncsv)
+    for question in questioncsv:
         if len(question)==1:
             type=question[0]
-            question_list[type] = []
+            questions[type] = []
         else:
-            question_list[type].append(question)
+            questions[type].append(question)
 
 def ask_question(question):
-    correct = tk.IntVar() # Whether or not the answer is correct. Will be 1 or 0.
+    correct = tk.IntVar()
 
-    def check_correct(answer): # A function to give the user the result and assign 'correct' the proper value.
-        if answer==int(question[5]):
+    def check_correct(answer):
+        if answer == int(question[5]):
             questionlabel.config(text="Correct!")
             correct.set(1)
         else:
             questionlabel.config(text="Not quite!")
             correct.set(0)
-        root.update()
-        time.sleep(1)
-    
-    #Creates widgets
-    questionlabel = tk.Label(text=question[0])
-    answer1 = tk.Button(root, text=question[1], command=lambda: check_correct(1))
-    answer2 = tk.Button(root, text=question[2], command=lambda: check_correct(2))
-    answer3 = tk.Button(root, text=question[3], command=lambda: check_correct(3))
-    answer4 = tk.Button(root, text=question[4], command=lambda: check_correct(4))
 
-    # Adds widgets to screen
+        # Disable all buttons immediately to prevent multiple clicks
+        answer1.config(state="disabled")
+        answer2.config(state="disabled")
+        answer3.config(state="disabled")
+        answer4.config(state="disabled")
+
+        # Schedule closing after 1 second, so user can see feedback
+        root.after(1000, root.quit)  # will exit mainloop below
+
+    button_frame = tk.Frame(root)
+    button_frame.pack(pady=20)
+
+    questionlabel = tk.Label(button_frame, text=question[0])
+    answer1 = tk.Button(button_frame, text=question[1], command=lambda: check_correct(1))
+    answer2 = tk.Button(button_frame, text=question[2], command=lambda: check_correct(2))
+    answer3 = tk.Button(button_frame, text=question[3], command=lambda: check_correct(3))
+    answer4 = tk.Button(button_frame, text=question[4], command=lambda: check_correct(4))
+
     questionlabel.pack(pady=10)
     answer1.pack(padx=20, pady=20, side="left")
     answer2.pack(padx=20, side="left")
     answer3.pack(padx=20, side="left")
     answer4.pack(padx=20, side="left")
-    
-    root.wait_variable(correct) # Waits for 'correct' to be assigned a value by check_correct()
 
-    # Cleans up widgets
+    root.mainloop()  # start event loop here, will quit when check_correct calls root.quit()
+
+    # After root.quit() is called (after 1 second delay), cleanup widgets
     questionlabel.destroy()
     answer1.destroy()
     answer2.destroy()
     answer3.destroy()
     answer4.destroy()
+    button_frame.destroy()
 
-    return correct.get() # Returns the value of 'correct' for score keeping.
+    return correct.get()
 
 def get_category(questions):
     category = tk.StringVar()
@@ -67,7 +77,7 @@ def get_category(questions):
     for i in questions:
         categories +=("\n" + i)
 
-    catlabel = tk.Label(text="Select category to play:" + categories)
+    catlabel = tk.Label(pady=20, text="Select category to play:" + categories)
     catlabel.pack()
 
     cat_input = tk.Entry(root, width=40)
@@ -90,14 +100,17 @@ def get_category(questions):
     cat_input.destroy()
     send_button.destroy()
 
+    return category.get().strip()
+
 def main(): # Main function, runs the whole program
 
     def run_main_function(command): # Function that decides what other function to run
+
         # Cleans up widgets
         gamelabel.destroy()
-        make.destroy
+        make.destroy()
         play.destroy()
-        quit.destroy
+        quit.destroy()
 
         match command:
             case 0:
@@ -105,20 +118,23 @@ def main(): # Main function, runs the whole program
             case 1:
                 category = get_category(questions)
                 score = 0
-                count = 0
-                score += ask_question(random.choice(category))
+                cat_copy = copy.deepcopy(questions[category])
+                for i in range(10):
+                    index = random.randrange(len(cat_copy))
+                    question = cat_copy.pop(index)
+                    score += ask_question(question)
             case 2:
                 root.destroy()
-    
-    #Creates widgets
+
+    # Creates widgets
     gamelabel = tk.Label(text="Quiz Game")
     make = tk.Button(root, text="Make Questions", command=lambda: run_main_function(0))
     play = tk.Button(root, text="Play", command=lambda: run_main_function(1))
     quit = tk.Button(root, text="Quit Game", command=lambda: run_main_function(2))
 
     # Adds widgets to screen
-    gamelabel.pack(pady=10)
-    make.pack(padx=30, pady=20, side="left")
+    gamelabel.pack(pady=20)
+    make.pack(padx=30, side="left")
     play.pack(padx=30, side="left")
     quit.pack(padx=30, side="left")
 

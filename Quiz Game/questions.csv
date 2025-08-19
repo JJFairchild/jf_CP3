@@ -1,56 +1,146 @@
 Question,Answer 1,Answer 2,Answer 3,Answer 4,Correct answer #
-General Knowledge
-What is the capital of Australia?,Sydney,Melbourne,Canberra,Perth,3
-What is the largest planet in our solar system?,Earth,Saturn,Jupiter,Mars,3
-Who wrote "Romeo and Juliet"?,Charles Dickens,William Shakespeare,Jane Austen,Mark Twain,2
-What is the chemical symbol for gold?,Gd,Ag,Au,Go,3
-In what year did World War II end?,1943,1945,1947,1950,2
-What is the smallest country in the world?,Monaco,Liechtenstein,Vatican City,San Marino,3
-What is the human body's largest organ?,Liver,Skin,Brain,Lung,2
-Which element has the atomic number 1?,Oxygen,Nitrogen,Helium,Hydrogen,4
-Which ocean is the largest?,Atlantic,Arctic,Indian,Pacific,4
-Who painted the Mona Lisa?,Vincent Van Gogh,Pablo Picasso,Leonardo da Vinci,Claude Monet,3
-Science
-What gas do plants absorb from the atmosphere?,Oxygen,Carbon Dioxide,Nitrogen,Hydrogen,2
-How many bones are in the adult human body?,206,201,256,198,1
-What part of the plant conducts photosynthesis?,Roots,Leaves,Stems,Flowers,2
-What planet is known as the Red Planet?,Venus,Jupiter,Mars,Neptune,3
-Which is a renewable source of energy?,Coal,Oil,Solar,Natural Gas,3
-What type of animal is a Komodo dragon?,Mammal,Reptile,Amphibian,Bird,2
-What’s the boiling point of water at sea level?,90°C,80°C,100°C,120°C,3
-What is the hardest natural substance?,Iron,Diamond,Quartz,Titanium,2
-Which blood type is known as the universal donor?,AB+,O+,O-,A-,3
-How many planets are in our solar system?,9,8,7,10,2
-History
-Who was the first President of the United States?,Thomas Jefferson,Abraham Lincoln,George Washington,John Adams,3
-What ancient civilization built the pyramids?,Greeks,Romans,Egyptians,Mayans,3
-In what year did the Titanic sink?,1905,1912,1921,1898,2
-Who discovered America in 1492?,Vasco da Gama,Christopher Columbus,Ferdinand Magellan,Leif Erikson,2
-What wall divided Berlin from 1961 to 1989?,Great Wall,Berlin Wall,Iron Curtain,Cold Wall,2
-Which empire was ruled by Julius Caesar?,Greek,Byzantine,Ottoman,Roman,4
-Who was the British Prime Minister during WWII?,Tony Blair,Margaret Thatcher,Winston Churchill,Neville Chamberlain,3
-Where did the Industrial Revolution begin?,Germany,USA,France,Britain,4
-Who was assassinated in Sarajevo in 1914?,Napoleon,Archduke Franz Ferdinand,Joseph Stalin,Adolf Hitler,2
-What year did the Berlin Wall fall?,1989,1991,1985,1995,1
-Literature/art
-Who wrote "1984"?,George Orwell,Aldous Huxley,Ernest Hemingway,J.K. Rowling,1
-What is the name of Sherlock Holmes’ assistant?,Watson,Lestrade,Moriarty,Hudson,1
-What is the main language of Shakespeare's works?,Latin,Middle English,Early Modern English,French,3
-Who painted "The Starry Night"?,Monet,Picasso,Van Gogh,Dali,3
-In which novel is the character Atticus Finch?,The Great Gatsby,To Kill a Mockingbird,Of Mice and Men,Catch-22,2
-Which author created "The Hobbit"?,J.K. Rowling,J.R.R. Tolkien,C.S. Lewis,George R.R. Martin,2
-Who wrote "Pride and Prejudice"?,Charlotte Brontë,Jane Austen,Emily Brontë,Mary Shelley,2
-What is the term for a 14-line poem?,Ode,Haiku,Sonnet,Ballad,3
-Which of these is a play by Sophocles?,Medea,Antigone,Lysistrata,The Bacchae,2
-What art style is Salvador Dalí known for?,Cubism,Surrealism,Impressionism,Realism,2
-Technology
-What does CPU stand for?,Central Programming Unit,Central Processing Unit,Computer Personal Unit,Control Processing Utility,2
-Who founded Microsoft?,Steve Jobs,Bill Gates,Larry Page,Mark Zuckerberg,2
-What does HTML stand for?,HyperText Makeup Language,HighText Markup Language,HyperText Markup Language,Hyper Tool Markup Language,3
-What is the name of Apple's mobile operating system?,Android,iPhone OS,MacOS,iOS,4
-What is the most used search engine?,Bing,Yahoo,Google,DuckDuckGo,3
-What does USB stand for?,Universal Serial Bus,Unified System Base,Universal System Binary,User Secure Band,1
-What is the term for a malicious software?,Bug,Spam,Malware,Patch,3
-What company developed the Android OS?,Apple,Microsoft,Google,Samsung,3
-What is the default file extension for a Word document?,.txt,.pdf,.docx,.html,3
-What does AI stand for in technology?,Automated Interface,Artificial Intelligence,Analog Internet,Advanced Information,2
+General knowledge
+What is the capital of France?,Berlin,Madrid,Paris,Rome,3
+Which planet is known as the Red Planet?,Venus,Mars,Jupiter,Saturn,2
+What is the largest ocean on Earth?,Atlantic,Indian,Arctic,Pacific,4
+Who wrote "Romeo and Juliet"?,Charles Dickens,William Shakespeare,Mark Twain,Leo Tolstoy,2
+What is the chemical symbol for water?,O2,H2O,CO2,NaCl,2
+Which country has the Great Barrier Reef?,Australia,South Africa,Brazil,India,1
+What year did World War II end?,1942,1945,1948,1950,2
+What is the smallest prime number?,0,1,2,3,3
+Who painted the Mona Lisa?,Vincent Van Gogh,Claude Monet,Leonardo da Vinci,Pablo Picasso,3
+What is the tallest mountain in the world?,K2,Mount Everest,Kangchenjunga,Lhotse,2
+What is the currency of Japan?,Yen,Won,Dollar,Rupee,1
+Which gas do plants absorb from the atmosphere?,Oxygen,Carbon Dioxide,Nitrogen,Helium,2
+How many continents are there?,5,6,7,8,3
+What is the boiling point of water in Celsius?,90°C,100°C,110°C,120°C,2
+Who discovered penicillin?,Marie Curie,Alexander Fleming,Louis Pasteur,Gregor Mendel,2
+Which element has the atomic number 1?,Helium,Hydrogen,Oxygen,Carbon,2
+What is the largest mammal?,Elephant,Blue Whale,Giraffe,Hippopotamus,2
+Which country hosted the 2016 Summer Olympics?,China,Brazil,UK,Russia,2
+What language has the most native speakers?,English,Spanish,Mandarin,Hindi,3
+What is the hardest natural substance on Earth?,Gold,Diamond,Iron,Platinum,2
+What is the fastest land animal?,Cheetah,Lion,Tiger,Leopard,1
+Which instrument has 88 keys?,Violin,Flute,Piano,Guitar,3
+Who is known as the "Father of Computers"?,Charles Babbage,Alan Turing,John von Neumann,Steve Jobs,1
+What does DNA stand for?,Deoxyribonucleic Acid,Ribonucleic Acid,Dinucleic Acid,Dioxin Acid,1
+How many planets are in the Solar System?,7,8,9,10,2
+Who invented the light bulb?,Nikola Tesla,Thomas Edison,Alexander Graham Bell,James Watt,2
+What is the main ingredient in sushi?,Beef,Chicken,Fish,Pork,3
+What is the largest desert in the world?,Sahara,Arctic,Antarctic,Gobi,3
+Which city is known as the "Big Apple"?,Los Angeles,Chicago,New York,Miami,3
+How many sides does a hexagon have?,5,6,7,8,2
+What is the chemical symbol for gold?,Au,Ag,Fe,Hg,1
+Who wrote "1984"?,George Orwell,Aldous Huxley,Ray Bradbury,Kurt Vonnegut,1
+What year did the Titanic sink?,1905,1912,1918,1920,2
+What is the largest organ in the human body?,Heart,Liver,Skin,Lungs,3
+Which planet has rings?,Venus,Mars,Saturn,Jupiter,3
+What is the capital of Canada?,Toronto,Vancouver,Ottawa,Montreal,3
+Who developed the theory of relativity?,Isaac Newton,Albert Einstein,Niels Bohr,Galileo Galilei,2
+What is the main gas found in the Earth's atmosphere?,Oxygen,Nitrogen,Carbon Dioxide,Argon,2
+How many bones are in the adult human body?,206,210,201,196,1
+What is the largest island in the world?,Greenland,Madagascar,Borneo,Sicily,1
+Which animal is known as the "King of the Jungle"?,Tiger,Lion,Elephant,Cheetah,2
+What is the capital of Italy?,Venice,Milan,Rome,Florence,3
+What currency is used in the United Kingdom?,Euro,Pound Sterling,Dollar,Franc,2
+Which scientist proposed the laws of motion?,Albert Einstein,Isaac Newton,Nikola Tesla,Galileo Galilei,2
+What is the tallest building in the world?,Empire State Building,Burj Khalifa,Shanghai Tower,One World Trade Center,2
+What is the longest river in the world?,Amazon,Nile,Yangtze,Mississippi,2
+Which country is famous for tulips?,France,Netherlands,Italy,Germany,2
+Science/technology
+What does CPU stand for?,Central Processing Unit,Computer Personal Unit,Central Programming Unit,Computer Processing Utility,1
+Which planet is closest to the Sun?,Venus,Mercury,Mars,Earth,2
+What is the chemical formula for table salt?,NaCl,KCl,CaCl2,Na2CO3,1
+What does HTTP stand for?,HyperText Transfer Protocol,HyperText Transmission Protocol,HighText Transfer Protocol,Hyper Transfer Text Protocol,1
+Which element is a noble gas?,Oxygen,Helium,Hydrogen,Nitrogen,2
+What unit is used to measure electric current?,Volt,Ampere,Ohm,Watt,2
+What device is used to measure temperature?,Barometer,Thermometer,Hygrometer,Anemometer,2
+Which programming language is known as the backbone of web development?,Python,Java,HTML,C++,3
+What does DNA stand for?,Deoxyribonucleic Acid,Deoxyribogenetic Acid,Dioxyribonucleic Acid,Ribonucleic Acid,1
+Who invented the telephone?,Thomas Edison,Alexander Graham Bell,Nikola Tesla,Guglielmo Marconi,2
+What kind of energy is stored in a battery?,Kinetic,Potential,Chemical,Thermal,3
+Which particle has a positive charge?,Electron,Neutron,Proton,Photon,3
+What technology is used in Bitcoin?,Blockchain,Cloud Computing,Artificial Intelligence,Machine Learning,1
+Which organ is responsible for pumping blood?,Lungs,Heart,Liver,Brain,2
+What is the speed of light?,300,000 km/s,150,000 km/s,30,000 km/s,3,000 km/s,1
+What gas do humans breathe in to survive?,Carbon Dioxide,Oxygen,Nitrogen,Helium,2
+What does AI stand for?,Artificial Intelligence,Automated Interface,Advanced Information,Artificial Input,1
+Which is the smallest unit of life?,Atom,Molecule,Cell,Tissue,3
+What does USB stand for?,Universal Serial Bus,United System Bus,Universal Service Bus,United Serial Bus,1
+What is the powerhouse of the cell?,Nucleus,Mitochondria,Ribosome,Chloroplast,2
+Which language is used for iOS app development?,Java,Swift,Kotlin,Python,2
+What type of waves are X-rays?,Sound Waves,Electromagnetic Waves,Mechanical Waves,Radio Waves,2
+Which vitamin is produced when skin is exposed to sunlight?,Vitamin A,Vitamin B,Vitamin C,Vitamin D,4
+What is the main function of white blood cells?,Carry Oxygen,Fight Infection,Clot Blood,Store Energy,2
+What device converts digital signals to analog?,Router,Modem,Switch,Hub,2
+Which planet has the most moons?,Earth,Mars,Saturn,Jupiter,4
+What is the main component of natural gas?,Methane,Ethane,Propane,Butane,1
+What is the name of the first artificial Earth satellite?,Apollo 11,Sputnik 1,Explorer 1,Vostok 1,2
+What technology is used to make telephone calls over the internet?,VoIP,Bluetooth,Wi-Fi,NFC,1
+What is the standard unit of power?,Watt,Volt,Ampere,Ohm,1
+Which metal is liquid at room temperature?,Mercury,Lead,Gold,Copper,1
+Who is considered the father of modern physics?,Isaac Newton,Albert Einstein,Niels Bohr,Galileo Galilei,2
+What is the main gas responsible for global warming?,Oxygen,Nitrogen,Carbon Dioxide,Argon,3
+Which element has the symbol Fe?,Iron,Fluorine,Francium,Fermium,1
+What is the main ingredient in glass?,Sand,Clay,Plastic,Metal,1
+What is the name of the galaxy that contains our Solar System?,Andromeda,Milky Way,Triangulum,Sombrero,2
+Which part of the computer stores data temporarily?,Hard Drive,RAM,ROM,CPU,2
+What does Wi-Fi stand for?,Wireless Fidelity,Wide Fidelity,Wireless Fiber,Wide Fiber,1
+What kind of scientist studies rocks?,Biologist,Geologist,Physicist,Chemist,2
+Which planet is known for its Great Red Spot?,Jupiter,Saturn,Neptune,Uranus,1
+What is the chemical symbol for oxygen?,Ox,O,O2,O3,2
+What does LCD stand for?,Liquid Crystal Display,Light Crystal Display,Large Crystal Display,Liquid Color Display,1
+Which animal’s DNA was first sequenced?,Fruit Fly,Mouse,Horse,Honeybee,1
+Which invention is credited to Johannes Gutenberg?,Telephone,Printing Press,Light Bulb,Radio,2
+What is a group of atoms called?,Molecule,Cell,Tissue,Organ,1
+What is the name of the device used to measure atmospheric pressure?,Thermometer,Barometer,Hygrometer,Anemometer,2
+Which technology enables wireless charging?,Induction,Conduction,Convection,Reflection,1
+What is the boiling point of water in Fahrenheit?,212°F,100°F,180°F,32°F,1
+History/geography
+Who was the first President of the United States?,George Washington,Thomas Jefferson,Abraham Lincoln,John Adams,1
+What year did the Berlin Wall fall?,1987,1989,1991,1993,2
+Which empire was ruled by Genghis Khan?,Roman,Mongol,Ottoman,British,2
+What is the longest river in Africa?,Nile,Amazon,Congo,Zambezi,1
+Who discovered America?,Christopher Columbus,Ferdinand Magellan,Vasco da Gama,Leif Erikson,1
+What city was ancient Rome’s capital?,Athens,Rome,Constantinople,Alexandria,2
+In which country is Machu Picchu located?,Peru,Bolivia,Ecuador,Chile,1
+Which war was fought between the North and South regions in the USA?,World War I,Civil War,Revolutionary War,Cold War,2
+What year did the French Revolution begin?,1787,1789,1791,1793,2
+Which continent is the Sahara Desert located on?,Asia,Africa,Australia,South America,2
+Who was the British Prime Minister during World War II?,Winston Churchill,Neville Chamberlain,Clement Attlee,Margaret Thatcher,1
+What is the smallest country in the world?,Monaco,Vatican City,San Marino,Liechtenstein,2
+Which ancient civilization built the pyramids?,Romans,Egyptians,Mayans,Incas,2
+Who was the first man to step on the moon?,Yuri Gagarin,Neil Armstrong,Buzz Aldrin,Michael Collins,2
+What is the capital of Russia?,Moscow,St. Petersburg,Kiev,Novosibirsk,1
+In which year did India gain independence from Britain?,1945,1947,1950,1952,2
+What is the main language spoken in Brazil?,Spanish,Portuguese,French,English,2
+Who was known as the "Iron Lady"?,Angela Merkel,Margaret Thatcher,Hillary Clinton,Indira Gandhi,2
+What is the capital city of Australia?,Sydney,Melbourne,Canberra,Perth,3
+Which explorer first circumnavigated the globe?,Ferdinand Magellan,Christopher Columbus,Vasco da Gama,James Cook,1
+Which country is famous for the landmark Taj Mahal?,India,Pakistan,Bangladesh,Nepal,1
+What was the name of the ship on which the Pilgrims traveled to America?,Santa Maria,Mayflower,Endeavour,Beagle,2
+Who was the first female Prime Minister of the UK?,Theresa May,Margaret Thatcher,Angela Merkel,Indira Gandhi,2
+What year did the Great Fire of London occur?,1664,1666,1670,1680,2
+Which desert is the largest hot desert?,Sahara,Gobi,Kalahari,Thar,1
+Which continent has the most countries?,Africa,Asia,Europe,South America,1
+Who was the ancient Greek god of the sea?,Zeus,Hades,Poseidon,Ares,3
+What year did the American Civil War start?,1860,1861,1865,1870,2
+Which city is the capital of Japan?,Osaka,Kyoto,Tokyo,Hiroshima,3
+Who was the first Emperor of China?,Qin Shi Huang,Sun Tzu,Confucius,Liu Bang,1
+What river runs through Paris?,Seine,Thames,Danube,Rhine,1
+What is the capital of Egypt?,Alexandria,Cairo,Luxor,Aswan,2
+Which empire built the Colosseum?,Roman,Greek,Persian,Egyptian,1
+Who was the famous civil rights leader who delivered the "I Have a Dream" speech?,Malcolm X,Martin Luther King Jr.,Rosa Parks,Frederick Douglass,2
+What country is known as the Land of the Rising Sun?,China,South Korea,Japan,Thailand,3
+Which war ended with the Treaty of Versailles?,World War I,World War II,Cold War,Vietnam War,1
+Who was the ruler of the Soviet Union during World War II?,Lenin,Joseph Stalin,Nikita Khrushchev,Mikhail Gorbachev,2
+Which mountain range separates Europe and Asia?,Himalayas,Ural Mountains,Andes,Alps,2
+What year did the Titanic sink?,1912,1915,1920,1905,1
+Which US state is known as the "Sunshine State"?,California,Florida,Texas,Arizona,2
+Who was the first woman to fly solo across the Atlantic Ocean?,Amelia Earhart,Bessie Coleman,Harriet Quimby,Sally Ride,1
+What is the largest country by area?,Russia,Canada,China,USA,1
+Which ancient civilization is famous for its hieroglyphs?,Greek,Egyptian,Roman,Mayan,2
+Who wrote the Declaration of Independence?,Thomas Jefferson,Benjamin Franklin,John Adams,James Madison,1
+What city is known as the Eternal City?,Rome,Venice,Florence,Milan,1
+Which country hosted the 2008 Summer Olympics?,China,Brazil,UK,Russia,1
+What is the capital of South Africa?,Johannesburg,Pretoria,Cape Town,Durban,2
