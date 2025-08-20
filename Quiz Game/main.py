@@ -1,25 +1,25 @@
 # Jonas Fairchild, Quiz Game
 
-import csv # Import modules
-import random
+"""
+To do:
+- Allow users to create lists of questions
+- User profiles (Admin users can create new lists of questions, normal users can just select from lists of questions to do)
+"""
+
+
+import random # Import modules
 import copy
+
+from file_handling import * # Import files
+from ask_questions import *
 
 import tkinter as tk # Set up tkinter
 root = tk.Tk()
 root.title("Quiz Game")
 root.geometry("400x200")
 
-questions = {}
-
-with open("Quiz Game/questions.csv", "r", newline='') as file: # Gets the csv file into 'questions'
-    questioncsv = csv.reader(file)
-    next(questioncsv)
-    for question in questioncsv:
-        if len(question)==1:
-            type=question[0]
-            questions[type] = []
-        else:
-            questions[type].append(question)
+userstatus = "login" # Whether or not the user is logged in, doubles as text for homescreen login/logout
+questions = read()
 
 def main(): # Main function, runs the whole program
 
@@ -48,8 +48,11 @@ def main(): # Main function, runs the whole program
                     result = ask_question(question)
                     if result == "BACK":
                         run_main_function(1)
-                        break
+                        return
                     score += int(result)
+                win_screen(score)
+                main()
+                return
             case 2:
                 root.destroy()
 

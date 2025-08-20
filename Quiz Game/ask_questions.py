@@ -1,4 +1,3 @@
-
 import time
 import math
 import random
@@ -27,7 +26,7 @@ def ask_question(question): # Function to ask the user a specific question
         if answer == int(question[5]):
             questionlabel.config(text="Correct!")
             end_time=time.time()
-            correct.set(max(1, math.floor(5 - 0.4 * (end_time-start_time))))
+            correct.set(max(1, math.floor(5 - 0.4 * (end_time-start_time)))) # Changes the amount of points you get based on how long it took you to answer
         else:
             questionlabel.config(text="Not quite!")
             correct.set(0)
@@ -117,3 +116,15 @@ def get_category(questions):
     back_button.destroy()
 
     return category.get().strip()
+
+def win_screen(points):
+    leave = tk.BooleanVar()
+
+    winlabel = tk.Label(pady=20, text=f"Congrats! You got {points} points!")
+    winlabel.pack()
+
+    send_button = tk.Button(pady=20, text="Return to main menu", command=leave.set(True)) # Button to press as an alternative to the enter key.
+    send_button.pack()
+
+    root.wait_variable(leave)
+
