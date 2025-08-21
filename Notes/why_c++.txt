@@ -1,0 +1,26 @@
+Lesson #: Why C++
+LESSON I CAN: I CAN explain why we use C++
+
+By the end of this lesson you will be able to:
+- Explain What C++ is.
+- List reasons people are still learning C++ today
+- Set up my VS Code for C++ Programming
+
+State Standards:
+***This is a UVU CS1410 requirement***
+
+INSTRUCTIONS:
+Notes are taken during class and can be taken on paper, on a digital document, or in a specific folder in your programming files (VS Code and Github)
+
+QUESTIONS:
+- What type of programming language is C++?
+C++ is a statically typed and compiled language. It's a lower-level language than python, so it gives you more control over syntax. Since it's statically typed, you have to tell it what type of data you are working with. Since it's compiled, it runs the whole program (not line by line) and then tells you if there is an error at the very end.
+
+- When was C++ created? and Why?
+C++ was created in 1979 because C (the original) didn't have enough adaptibility, so C++ was created so developers could do more. Also, Python wastes a lot of storage space since it's dynamically typed, whereas C++ saves a lot of space and is able to run faster.
+
+- What types of programs are created with C++?
+Console games are generally made with C++. Operating systems are also usually programmed in C++, and so are most desktop applications and PC games.
+
+- How do I set up my VS Code for C++
+If it doesn't work after installing the C/C++ extension, you need to ask Ms.LaRose because I am NOT writing allat.
