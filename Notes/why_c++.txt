@@ -23,4 +23,4 @@ C++ was created in 1979 because C (the original) didn't have enough adaptibility
 Console games are generally made with C++. Operating systems are also usually programmed in C++, and so are most desktop applications and PC games.
 
 - How do I set up my VS Code for C++
-If it doesn't work after installing the C/C++ extension, you need to ask Ms.LaRose because I am NOT writing allat.
+If it doesn't work after installing the C/C++ extension, you need to ask Ms.LaRose because I am NOT gonna understand any of that.
