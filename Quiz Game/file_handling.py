@@ -4,11 +4,11 @@ def read(): # Function to read the contents of questions.csv and transfer it int
 
     questions = {}
 
-    with open("Quiz Game/questions.csv", "r", newline='') as file: # Gets the csv file into 'questions'
-        questioncsv = csv.reader(file)
-        next(questioncsv)
-        for question in questioncsv:
-            if len(question)==1:
+    with open("Quiz Game/questions.csv", "r", newline='') as file:
+        question_csv = csv.reader(file)
+        next(question_csv)
+        for question in question_csv:
+            if len(question)==1: # Differentiates between category titles and individual questions.
                 type=question[0]
                 questions[type] = []
             else:
