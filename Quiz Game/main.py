@@ -17,9 +17,9 @@ from make_questions import make as make_func, login
 import tkinter as tk # Set up tkinter
 root = tk.Tk()
 root.title("Quiz Game")
-root.geometry("400x200")
+root.geometry("400x300")
 
-user_status = "logout" # Whether or not the user is logged in, doubles as text for homescreen login/logout
+user_status = "login" # Whether or not the user is logged in, doubles as text for homescreen login/logout
 questions = read()
 
 def main(): # Main function, runs the whole program
@@ -55,24 +55,30 @@ def main(): # Main function, runs the whole program
                 score = 0
                 cat_copy = copy.deepcopy(questions[category])
                 for i in range(10):
-                    index = random.randrange(len(cat_copy))
-                    question = cat_copy.pop(index)
-                    result = ask_question(root, question)
-                    if result == "BACK":
-                        run_main_function(1)
-                        return
-                    score += int(result)
+                    try:
+                        index = random.randrange(len(cat_copy))
+                        question = cat_copy.pop(index)
+                        result = ask_question(root, question)
+
+                        if result == "BACK":
+                            run_main_function(1)
+                            return
+                        score += int(result)
+                    except:
+                        pass
+                    
                 win_screen(root, score)
                 main()
                 return
             case 2: # Kills the program
+                write(questions)
                 root.destroy()
             case 3: # Log in/out
-                log_return = login(root, userstatus)
+                log_return = login(root, user_status)
                 if log_return == "BACK":
                     main()
                     return
-                userstatus = log_return
+                user_status = log_return
                 main()
                 return
 
@@ -96,9 +102,6 @@ def main(): # Main function, runs the whole program
 
     login_frame.pack(side="bottom", anchor="sw", fill="x")
     log_button.pack(padx=10, pady=10, side="left")
-
-    
-    
 
 main()
 root.mainloop()

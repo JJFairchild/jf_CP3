@@ -26,7 +26,7 @@ def ask_question(root, question): # Function to ask the user a specific question
         if answer == int(question[5]):
             question_label.config(text="Correct!")
             end_time=time.time()
-            correct.set(max(1, math.floor(5 - 0.4 * (end_time-start_time)))) # Changes the amount of points you get based on how long it took you to answer
+            correct.set(max(1, math.floor(6 - 0.4 * (end_time-start_time)))) # Changes the amount of points you get based on how long it took you to answer
         else:
             question_label.config(text="Not quite!")
             correct.set(0)

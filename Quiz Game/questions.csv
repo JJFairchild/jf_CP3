@@ -3,7 +3,7 @@ General knowledge
 What is the capital of France?,Berlin,Madrid,Paris,Rome,3
 Which planet is known as the Red Planet?,Venus,Mars,Jupiter,Saturn,2
 What is the largest ocean on Earth?,Atlantic,Indian,Arctic,Pacific,4
-Who wrote "Romeo and Juliet"?,Charles Dickens,William Shakespeare,Mark Twain,Leo Tolstoy,2
+"Who wrote ""Romeo and Juliet""?",Charles Dickens,William Shakespeare,Mark Twain,Leo Tolstoy,2
 What is the chemical symbol for water?,O2,H2O,CO2,NaCl,2
 Which country has the Great Barrier Reef?,Australia,South Africa,Brazil,India,1
 What year did World War II end?,1942,1945,1948,1950,2
@@ -22,16 +22,16 @@ What language has the most native speakers?,English,Spanish,Mandarin,Hindi,3
 What is the hardest natural substance on Earth?,Gold,Diamond,Iron,Platinum,2
 What is the fastest land animal?,Cheetah,Lion,Tiger,Leopard,1
 Which instrument has 88 keys?,Violin,Flute,Piano,Guitar,3
-Who is known as the "Father of Computers"?,Charles Babbage,Alan Turing,John von Neumann,Steve Jobs,1
+"Who is known as the ""Father of Computers""?",Charles Babbage,Alan Turing,John von Neumann,Steve Jobs,1
 What does DNA stand for?,Deoxyribonucleic Acid,Ribonucleic Acid,Dinucleic Acid,Dioxin Acid,1
 How many planets are in the Solar System?,7,8,9,10,2
 Who invented the light bulb?,Nikola Tesla,Thomas Edison,Alexander Graham Bell,James Watt,2
 What is the main ingredient in sushi?,Beef,Chicken,Fish,Pork,3
 What is the largest desert in the world?,Sahara,Arctic,Antarctic,Gobi,3
-Which city is known as the "Big Apple"?,Los Angeles,Chicago,New York,Miami,3
+"Which city is known as the ""Big Apple""?",Los Angeles,Chicago,New York,Miami,3
 How many sides does a hexagon have?,5,6,7,8,2
 What is the chemical symbol for gold?,Au,Ag,Fe,Hg,1
-Who wrote "1984"?,George Orwell,Aldous Huxley,Ray Bradbury,Kurt Vonnegut,1
+"Who wrote ""1984""?",George Orwell,Aldous Huxley,Ray Bradbury,Kurt Vonnegut,1
 What year did the Titanic sink?,1905,1912,1918,1920,2
 What is the largest organ in the human body?,Heart,Liver,Skin,Lungs,3
 Which planet has rings?,Venus,Mars,Saturn,Jupiter,3
@@ -40,7 +40,7 @@ Who developed the theory of relativity?,Isaac Newton,Albert Einstein,Niels Bohr,
 What is the main gas found in the Earth's atmosphere?,Oxygen,Nitrogen,Carbon Dioxide,Argon,2
 How many bones are in the adult human body?,206,210,201,196,1
 What is the largest island in the world?,Greenland,Madagascar,Borneo,Sicily,1
-Which animal is known as the "King of the Jungle"?,Tiger,Lion,Elephant,Cheetah,2
+"Which animal is known as the ""King of the Jungle""?",Tiger,Lion,Elephant,Cheetah,2
 What is the capital of Italy?,Venice,Milan,Rome,Florence,3
 What currency is used in the United Kingdom?,Euro,Pound Sterling,Dollar,Franc,2
 Which scientist proposed the laws of motion?,Albert Einstein,Isaac Newton,Nikola Tesla,Galileo Galilei,2
@@ -114,7 +114,7 @@ Who was the first man to step on the moon?,Yuri Gagarin,Neil Armstrong,Buzz Aldr
 What is the capital of Russia?,Moscow,St. Petersburg,Kiev,Novosibirsk,1
 In which year did India gain independence from Britain?,1945,1947,1950,1952,2
 What is the main language spoken in Brazil?,Spanish,Portuguese,French,English,2
-Who was known as the "Iron Lady"?,Angela Merkel,Margaret Thatcher,Hillary Clinton,Indira Gandhi,2
+"Who was known as the ""Iron Lady""?",Angela Merkel,Margaret Thatcher,Hillary Clinton,Indira Gandhi,2
 What is the capital city of Australia?,Sydney,Melbourne,Canberra,Perth,3
 Which explorer first circumnavigated the globe?,Ferdinand Magellan,Christopher Columbus,Vasco da Gama,James Cook,1
 Which country is famous for the landmark Taj Mahal?,India,Pakistan,Bangladesh,Nepal,1
@@ -130,13 +130,13 @@ Who was the first Emperor of China?,Qin Shi Huang,Sun Tzu,Confucius,Liu Bang,1
 What river runs through Paris?,Seine,Thames,Danube,Rhine,1
 What is the capital of Egypt?,Alexandria,Cairo,Luxor,Aswan,2
 Which empire built the Colosseum?,Roman,Greek,Persian,Egyptian,1
-Who was the famous civil rights leader who delivered the "I Have a Dream" speech?,Malcolm X,Martin Luther King Jr.,Rosa Parks,Frederick Douglass,2
+"Who was the famous civil rights leader who delivered the ""I Have a Dream"" speech?",Malcolm X,Martin Luther King Jr.,Rosa Parks,Frederick Douglass,2
 What country is known as the Land of the Rising Sun?,China,South Korea,Japan,Thailand,3
 Which war ended with the Treaty of Versailles?,World War I,World War II,Cold War,Vietnam War,1
 Who was the ruler of the Soviet Union during World War II?,Lenin,Joseph Stalin,Nikita Khrushchev,Mikhail Gorbachev,2
 Which mountain range separates Europe and Asia?,Himalayas,Ural Mountains,Andes,Alps,2
 What year did the Titanic sink?,1912,1915,1920,1905,1
-Which US state is known as the "Sunshine State"?,California,Florida,Texas,Arizona,2
+"Which US state is known as the ""Sunshine State""?",California,Florida,Texas,Arizona,2
 Who was the first woman to fly solo across the Atlantic Ocean?,Amelia Earhart,Bessie Coleman,Harriet Quimby,Sally Ride,1
 What is the largest country by area?,Russia,Canada,China,USA,1
 Which ancient civilization is famous for its hieroglyphs?,Greek,Egyptian,Roman,Mayan,2
@@ -144,3 +144,4 @@ Who wrote the Declaration of Independence?,Thomas Jefferson,Benjamin Franklin,Jo
 What city is known as the Eternal City?,Rome,Venice,Florence,Milan,1
 Which country hosted the 2008 Summer Olympics?,China,Brazil,UK,Russia,1
 What is the capital of South Africa?,Johannesburg,Pretoria,Cape Town,Durban,2
+Thing
