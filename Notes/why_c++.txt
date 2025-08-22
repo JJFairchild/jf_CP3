@@ -1,4 +1,4 @@
-Lesson #: Why C++
+Lesson 1: Why C++
 LESSON I CAN: I CAN explain why we use C++
 
 By the end of this lesson you will be able to:
