@@ -39,4 +39,5 @@ int main(){
     float far;
     cin >> far;
     cout << far << " degrees Fahrenheit is " << (far-32)*(5.0/9) << " degrees Celsius.";
+    return 0;
 }

@@ -1,0 +1,41 @@
+Lesson 3: Strings, Arrays, Conditionals
+LESSON I CAN:I CAN use strings arrays and conditionals in C++
+
+By the end of this lesson you will be able to:
+- Describe the basics of how strings are made in C++
+- Create an array
+- Build a conditional to check an array
+
+State Standards:
+***This is a UVU CS1410 requirement***
+
+INSTRUCTIONS:
+- Notes are taken during class and can be taken on paper, on a digital document, or in a specific folder in your programming files (VS Code and Github)
+
+QUESTIONS:
+- What is Narrowing?
+Narrowing is when you take a variable that already exists and turn it into a data type that takes up less space. You may lose information if there is not enough space in the smaller variable.
+
+- What is a basic way to generate random numbers in C++?
+
+
+- What is an array?
+
+
+- How do I create an array?
+
+
+- How do you make strings in C?
+
+
+- How did C++ improve creating strings? 
+
+
+- How do I search a string?
+
+
+- How do I modify a string?
+
+
+- What are some string methods? 
+
