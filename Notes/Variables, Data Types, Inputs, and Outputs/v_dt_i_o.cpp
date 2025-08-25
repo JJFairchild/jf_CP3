@@ -4,13 +4,14 @@
 using namespace std;
 
 int main(){
-    short days = 5;
+    short days = 5; // Variable Types
     int students = 11;
     long years = 25541;
     const float pi = 3.1415926535f; //float will automatically compile to double if f is not included
     bool on = true;
     char name = 'Clang';
-    cout << "Tell me your age: ";
+
+    cout << "Tell me your age: "; // Inputs and outputs
     int age;
     cin >> age;
     cout << "Your age is: " << age << endl;
