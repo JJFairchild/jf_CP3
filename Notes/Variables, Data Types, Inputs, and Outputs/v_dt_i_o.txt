@@ -27,19 +27,19 @@ For C++ variables, snake_case should be used.
 The C++ standard library is iostream.
 
 - How do you access the standard library?
-You use '#include <iostream>'
+You type '#include <iostream>'
 
 - How do you create an output in C++?
-You can create an output by typing std::cout << {string}
+You can create an output by typing std::cout << "string to output"
 
 - How do you create an input in C++?
-
+You should have an output letting the user know they should input something. Then, declare the variable (int var). Then, you can do std::cin << var, which will prompt the user to input the variable value.
 
 - What is the stream in C++?
-
+The stream is information flowing to and from input-output (or I/O) things such as devices, programs, and files.
 
 - What is a constant?
 Constants are values in our program that we don't want to change.
 
 - Why do we write constants?
-So you can create variables that you can't change, such as the value of pi.
+So you can create values that you can't change, such as the value of pi.
