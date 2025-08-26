@@ -20,22 +20,22 @@ Narrowing is when you take a variable that already exists and turn it into a dat
 You have to #include <cstdlib> and <ctime> and initialize a variable with time(nullptr), seed the rand() function with srand(seconds), then declare the variable with int x = rand() % y, where y is the upper limit of your random number plus one.
 
 - What is an array?
-
+An array is a list, but it cannot have mixed data types.
 
 - How do I create an array?
-
+Declare it like a variable, except afterwards you need to put the length of the list in brackets. ex: int grades[5] = {96, 75, 89, 90, 98};
 
 - How do you make strings in C?
-
+Make sure to use namespace std, but then you can declare it by calling the variable type a string: string name = "myname";
 
 - How did C++ improve creating strings? 
-
+It made a string variable type, whereas before you had to use the char type, which was harder to use in multiple ways.
 
 - How do I search a string?
-
+You can use .starts_with("x") and .ends_with("x"),which returns 1 or 0 depending if it starts or ends with x. You can also use .front() or .back(), which returns the first and last letter of the string respectively. You can also use .find() and .rfind(), .find_first_of(), and .find_last_of().
 
 - How do I modify a string?
-
+You can use .insert(), .append() to add things, .replace() to replace things, and .erase(), and .clear() to delete things.
 
 - What are some string methods? 
-
+.starts_with(), .ends_with(), .front(), .back(), .find(), .rfind(), .find_first_of(), .find_last_of(), .find_first_not_of(), .find_last_not_of(), .insert(), .append(), .replace(), .erase(), .clear(), .length(), .substr()
