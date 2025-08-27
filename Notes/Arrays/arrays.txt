@@ -1,0 +1,44 @@
+Lesson 4: Arrays
+LESSON I CAN: I CAN use strings arrays and conditionals in C++
+
+By the end of this lesson you will be able to:
+- Iterate over an array
+- Compare items in arrays
+- Pass an array into a function
+- Understand type_t
+- Unpack an array
+- Search and sort arrays
+- Create multi dimensional arrays
+
+State Standards:
+***This is a UVU CS1410 requirement***
+
+INSTRUCTIONS:
+- Notes are taken during class and can be taken on paper, on a digital document, or in a specific folder in your programming files (VS Code and Github)
+
+QUESTIONS:
+- How are for loops constructed in C++?
+Use 'for (counting variable; continue condition; ){code}
+
+- When do you need to use curly brackets in C++?
+
+
+- How do you compare items in arrays?
+
+
+- How do you use an array as an argument in a function?
+
+
+- What is type_t?
+
+
+- Why would we use type_t?
+
+
+- How do you search an array?
+
+
+- How do you sort an array?
+
+
+- How do you make a multi-dimensional array?
