@@ -44,7 +44,12 @@ int main(){
     string name;
     cin >> name;
 
-    if (name in names){
-        
+    for(int i; i<size(names); i++){
+        if (name == names[i]){
+            cout << "Hello Admin " << name;
+            return 0;
+        }
     }
+
+    return 0;
 }

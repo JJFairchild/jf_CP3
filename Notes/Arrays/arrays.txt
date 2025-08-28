@@ -18,19 +18,19 @@ INSTRUCTIONS:
 
 QUESTIONS:
 - How are for loops constructed in C++?
-Use 'for (counting variable; continue condition; ){code}
+Use 'for (counting variable; continue condition; increment variable){code}
 
 - When do you need to use curly brackets in C++?
-
+After a conditional or loop that is more than one line long.
 
 - How do you compare items in arrays?
-
+Within a for loop, check if array1[i] == array2[i] with some modification to the index if needed (eg. i-3)
 
 - How do you use an array as an argument in a function?
-
+When defining the function, you must 
 
 - What is type_t?
-
+It's a variable type that 
 
 - Why would we use type_t?
 
