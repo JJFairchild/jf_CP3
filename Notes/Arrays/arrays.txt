@@ -27,10 +27,10 @@ After a conditional or loop that is more than one line long.
 Within a for loop, check if array1[i] == array2[i] with some modification to the index if needed (eg. i-3)
 
 - How do you use an array as an argument in a function?
-When defining the function, you must 
+When defining the function, you must include brackets on the array argument. (eg. int my_func(string my_array[]){})
 
 - What is type_t?
-It's a variable type that 
+It's a variable type that takes up the same amount of space as 'long long', but can't be negative.
 
 - Why would we use type_t?
 
@@ -42,3 +42,4 @@ It's a variable type that
 
 
 - How do you make a multi-dimensional array?
+You put arrays inside a larger array. You must include another set of brackets for how many items are in each sub-array and sub-arrays should use parentheses.

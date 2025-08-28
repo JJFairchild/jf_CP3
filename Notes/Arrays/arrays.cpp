@@ -36,7 +36,7 @@ int main(){
     auto [a, b, c, d, e, f] = fam;
     cout << e << endl;
 
-    // Multi dimensional
+    // Multi dimensional arrays
     int matrix[3][3] = {
         (1, 2, 3),
         (1, 2, 3),
