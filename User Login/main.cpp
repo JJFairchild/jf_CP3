@@ -45,11 +45,18 @@ int main(){
     cin >> name;
 
     for(int i; i<size(names); i++){
-        if (name == names[i]){
-            cout << "Hello Admin " << name;
+        if (name == names[i] and admins[i]){
+            cout << "Hello, Admin " << name;
             return 0;
         }
     }
-
+    for(int i; i<size(names); i++){
+        if (name == names[i]){
+            cout << "Welcome back, " << name;
+            return 0;
+        }
+    }
+    cout << "Let's get you signed up, " << name;
+    
     return 0;
 }
