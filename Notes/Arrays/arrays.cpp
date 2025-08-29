@@ -5,7 +5,7 @@
 using namespace std;
 
 string fam[6] = {"Kenneth", "Annette", "Jonas", "Landon", "William", "Spencer"};
-string sibs[4] = {"Jonas", "Landon", "William", "Spencer"};
+string childs[4] = {"Jonas", "Landon", "William", "Spencer"};
 
 int search(string list[], int len, string item){
     for (int i=0; i<len; i++){
@@ -20,9 +20,10 @@ int search(string list[], int len, string item){
 }
 
 int main(){
+    
     for(int i=0; i<size(fam); i++){
         cout << fam[i] << " Fairchild";
-        search(sibs, size(sibs), fam[i]);
+        search(childs, size(childs), fam[i]);
         cout << endl;
     }
 
@@ -36,11 +37,32 @@ int main(){
     auto [a, b, c, d, e, f] = fam;
     cout << e << endl;
 
-    // Multi dimensional arrays
-    int matrix[3][3] = {
-        (1, 2, 3),
-        (1, 2, 3),
-        (1, 2, 3)
+    // Sorting arrays
+    int list[19] = {5, 3, 8, 12, 16, 1, 1, 3, 5, 7, 2, 9, 64, 31, 86, 23, 98, 23, 54};
+    for (int i=0; i<size(list); i++){
+        for (int j=1; j<size(list); j++){
+            if(list[j] < list [j-1]){
+                int swap = list[j];
+                list[j] = list[j-1];
+                list[j-1] = swap;
+            }
+        }
+    }
+    for (int i=0; i<size(list); i++){
+        cout << list[i] << ", ";
+    }
+
+    // Multi-dimensional arrays
+    int matrix[3][3][3] = {
+        {
+            {1, 2, 3}, {1, 2, 3}, {1, 2, 3}
+        },
+        {
+            {1, 2, 3}, {1, 2, 3}, {1, 2, 3}
+        },
+        {
+            {1, 2, 3}, {1, 2, 3}, {1, 2, 3}
+        }
     };
 
     return 0;

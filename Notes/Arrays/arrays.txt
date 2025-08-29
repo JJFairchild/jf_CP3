@@ -33,13 +33,13 @@ When defining the function, you must include brackets on the array argument. (eg
 It's a variable type that takes up the same amount of space as 'long long', but can't be negative.
 
 - Why would we use type_t?
-
+It's the largest amount of space you can use for a variable, so it's a safe bet if you aren't sure how large something will be.
 
 - How do you search an array?
-
+Iterate over every item until one is the same as your key value. (if statement inside for loop)
 
 - How do you sort an array?
-
+Iterate through an array, swapping values that are in the wrong order. Repeat until the list is sorted.
 
 - How do you make a multi-dimensional array?
 You put arrays inside a larger array. You must include another set of brackets for how many items are in each sub-array and sub-arrays should use parentheses.
