@@ -44,16 +44,15 @@ int main(){
     string name;
     cin >> name;
 
-    for(int i; i<size(names); i++){
-        if (name == names[i] and admins[i]){
-            cout << "Hello, Admin " << name;
-            return 0;
-        }
-    }
-    for(int i; i<size(names); i++){
+    for(int i=0; i<size(names); i++){
         if (name == names[i]){
-            cout << "Welcome back, " << name;
-            return 0;
+            if (admins[i]==1){
+                cout << "Hello, Admin " << name;
+                return 0;
+            } else if (admins[i]==0){
+                cout << "Welcome back, " << name;
+                return 0;
+            }
         }
     }
     cout << "Let's get you signed up, " << name;
