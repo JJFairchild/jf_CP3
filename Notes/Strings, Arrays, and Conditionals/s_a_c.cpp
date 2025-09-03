@@ -13,7 +13,7 @@ int main(){
 
     int seconds = time(nullptr); // Randomness
     srand(seconds);
-    int my_num = rand() % 11;
+    int my_num = rand() % 3;
     cout << my_num << endl;
 
 
