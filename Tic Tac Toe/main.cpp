@@ -139,7 +139,7 @@ int main(){
     while(true){
         display();
 
-        while (true){
+        while(true){
             int row;
             int col;
             
@@ -147,22 +147,42 @@ int main(){
                 cout << "Select the row you want to play on (1, 2, 3): ";
                 cin >> row;
                 row -= 1;
-                if(not (0 <= row <= 2)){
+                if(not (0 <= row and row <= 2)){
                     cout << "That's not in the range. Try again.";
                     continue;
+                }
             }
             
             while(true){;
                 cout << "Select the column you want to play on (1, 2, 3): ";
                 cin >> col;
                 col -= 1;
-                if(not (0 <= col <= 2)){
+                if(not (0 <= col and col <= 2)){
                     cout << "That's not in the range. Try again.";
                     continue;
-            
+                }
             }
+            
+            if(board[row][col] != " "){
+                cout << "That space isn't available. Try again.";
+                continue;
+            }
+            break;
+        
+        board[row][col] = "X";
+        o_play();
+        string win = check_win();
+        if(win == "X"){
+            cout << "Congratulations! You win!";
+            return 0;
+        } else if(win == "O"){
+            cout << "Looks like you lost to a robot. Better luck next time!";
+            return 0;
+        } else if(win == "T"){
+            cout << "That's a tie! Better luck next time!";
+            return 0;
+        }
+
         }
     }
-
-    return 0;
 }
