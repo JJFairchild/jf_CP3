@@ -63,14 +63,14 @@ string board[3][3] = { // The board. Modified by several other functions.
 };
 
 int win_combos[8][3][2] = { // All possible win combinations.
-    {{{0}, {0}}, {{0}, {1}}, {{0}, {2}}},
-    {{{1}, {0}}, {{1}, {1}}, {{1}, {2}}},
-    {{{2}, {0}}, {{2}, {1}}, {{2}, {2}}},
-    {{{0}, {0}}, {{1}, {0}}, {{2}, {0}}},
-    {{{0}, {1}}, {{1}, {1}}, {{2}, {1}}},
-    {{{0}, {2}}, {{1}, {2}}, {{2}, {2}}},
-    {{{0}, {0}}, {{1}, {1}}, {{2}, {2}}},
-    {{{2}, {0}}, {{1}, {1}}, {{0}, {2}}}
+    {{0, 0}, {0, 1}, {0, 2}},
+    {{1, 0}, {1, 1}, {1, 2}},
+    {{2, 0}, {2, 1}, {2, 2}},
+    {{0, 0}, {1, 0}, {2, 0}},
+    {{0, 1}, {1, 1}, {2, 1}},
+    {{0, 2}, {1, 2}, {2, 2}},
+    {{0, 0}, {1, 1}, {2, 2}},
+    {{2, 0}, {1, 1}, {0, 2}}
 };
 
 string check_win(){ // Function to check the win state of the board (win for X or O, tie, or nothing)
@@ -108,30 +108,29 @@ string check_win(){ // Function to check the win state of the board (win for X o
 }
 
 void o_play(){ // Determines a spot for O to play.
-    while(true){
-        int seconds = time(nullptr); // Randomly selects a spot to play
-        srand(seconds);
-        int row = rand() % 3;
-        srand(seconds/10);
-        int col = rand() % 3;
+    if(check_win() == " "){
+        while(true){
+            // Randomly selects a spot to play
+            int row = rand() % 3;
+            int col = rand() % 3;
 
-        if(board[row][col] == " "){ // Makes sure the spot is open and sets it to O before leaving.
-            board[row][col] = "O";
-            break;
+            if(board[row][col] == " "){ // Makes sure the spot is open and sets it to O before leaving.
+                board[row][col] = "O";
+                break;
+            }
         }
     }
 }
 
 void display(){
     for(int i=0; i<3; i++){
-        for(int j=0; j<3; j++){
-            cout << board[i][j] << " ";
-        }
-        cout << endl;
+        cout << board[i][0] << " | " << board[i][1] << " | " << board[i][2] << endl;
     }
 }
 
 int main(){
+    srand(time(nullptr));
+    
     cout << "Tic Tac Toe is a game that takes place on a 3x3 board. The two players place Xs and Os in spots of their choosing (X plays first), and the first player to place 3 in a row (in any direction) of their tile wins.\nReady to begin?: ";
     int empty_input;
     cin >> empty_input;
@@ -151,6 +150,7 @@ int main(){
                     cout << "That's not in the range. Try again.";
                     continue;
                 }
+                break;
             }
             
             while(true){;
@@ -161,15 +161,18 @@ int main(){
                     cout << "That's not in the range. Try again.";
                     continue;
                 }
+                break;
             }
             
             if(board[row][col] != " "){
                 cout << "That space isn't available. Try again.";
                 continue;
             }
+
+            board[row][col] = "X";
             break;
+        }
         
-        board[row][col] = "X";
         o_play();
         string win = check_win();
         if(win == "X"){
@@ -183,6 +186,5 @@ int main(){
             return 0;
         }
 
-        }
     }
 }
