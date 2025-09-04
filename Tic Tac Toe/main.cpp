@@ -130,9 +130,10 @@ void display(){
 
 int main(){
     srand(time(nullptr));
-    
+    string win;
+
     cout << "Tic Tac Toe is a game that takes place on a 3x3 board. The two players place Xs and Os in spots of their choosing (X plays first), and the first player to place 3 in a row (in any direction) of their tile wins.\nReady to begin?: ";
-    int empty_input;
+    string empty_input;
     cin >> empty_input;
     
     while(true){
@@ -172,17 +173,36 @@ int main(){
             board[row][col] = "X";
             break;
         }
-        
-        o_play();
-        string win = check_win();
+
+        win = check_win();
         if(win == "X"){
-            cout << "Congratulations! You win!";
+            cout << "Congratulations! You win!\nFinal board state:\n";
+            display();
             return 0;
         } else if(win == "O"){
-            cout << "Looks like you lost to a robot. Better luck next time!";
+            cout << "Looks like you lost to a robot. Better luck next time!\nFinal board state:\n";
+            display();
             return 0;
         } else if(win == "T"){
-            cout << "That's a tie! Better luck next time!";
+            cout << "That's a tie! Better luck next time!\nFinal board state:\n";
+            display();
+            return 0;
+        }
+
+        o_play();
+
+        win = check_win();
+        if(win == "X"){
+            cout << "Congratulations! You win!\nFinal board state:\n";
+            display();
+            return 0;
+        } else if(win == "O"){
+            cout << "Looks like you lost to a robot. Better luck next time!\nFinal board state:\n";
+            display();
+            return 0;
+        } else if(win == "T"){
+            cout << "That's a tie! Better luck next time!\nFinal board state:\n";
+            display();
             return 0;
         }
 
