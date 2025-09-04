@@ -166,7 +166,7 @@ int main(){
             }
             
             if(board[row][col] != " "){
-                cout << "That space isn't available. Try again.";
+                cout << "That space isn't available. Try again.\n";
                 continue;
             }
 

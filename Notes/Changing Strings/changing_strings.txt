@@ -1,0 +1,28 @@
+Lesson 5: Working with Strings
+LESSON I CAN: I CAN change strings in C++
+
+By the end of this lesson you will be able to:
+- Get substrings
+- Use escape characters
+- Check what the string is
+- Convert the string to other data types
+- Use a raw string
+
+State Standards:
+***This is a UVU CS1410 requirement***
+
+INSTRUCTIONS:
+- Notes are taken during class and can be taken on paper, on a digital document, or in a specific folder in your programming files (VS Code and Github)
+
+QUESTIONS:
+- How do I get a substring from within a string?
+Create a substring with string.substr(starting index, ending index) and it will create a smaller string contained within the first.
+
+- How do I create an escape character in C++
+In a string, type a backslash. There are many different things that this can do depending on the following character.
+
+- How do I convert a string to another data type?
+Use std::sto_(string) where _ is the common character associated with the data type (i for int, f for float, etc.).
+
+- What is a raw string and when would I use it?
+A raw string is when a string has the prefix R (ex. R"stringhere"). It ignores escape characters and prints the code exactly as is.
