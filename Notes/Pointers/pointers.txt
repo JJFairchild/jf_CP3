@@ -1,0 +1,50 @@
+Lesson 6: Pointers
+LESSON I CAN:I CAN use pointers in C++
+
+By the end of this lesson you will be able to:
+- Define pointers
+- Use pointers in a program
+- Describe the benefits of pointers
+
+State Standards:
+***This is a UVU CS1410 requirement***
+
+INSTRUCTIONS:
+- Notes are taken during class and can be taken on paper, on a digital document, or in a specific folder in your programming files (VS Code and Github)
+
+QUESTIONS:
+- What is a pointer?
+It's a variable that holds the storage location of another variable.
+
+- Why do we use pointers?
+
+
+- How do I create a pointer
+
+
+- What is indirection or de-referencing?
+
+
+- What are constant pointers? How are the different types used?
+
+
+- How do you pass a pointer into a function?
+
+
+- Why would you pass a pointer to a function?
+
+
+- How do you compare pointers?
+
+
+- What is dynamic memory allocation?
+
+
+- What is the Stack?
+
+
+- What is the Heap?
+
+
+- What are smart pointers?
+They are pointers that clean up themselves. They have 2 types, unique and shared pointers. 
