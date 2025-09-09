@@ -17,34 +17,34 @@ QUESTIONS:
 It's a variable that holds the storage location of another variable.
 
 - Why do we use pointers?
-
+You can directly access and change memory, letting you do things like changing values from inside a function.
 
 - How do I create a pointer
-
+Declare a variable with an asterisk after the data type (int* pointername), then assign it to the address of the variable you want to make a pointer for (=&variablename;).
 
 - What is indirection or de-referencing?
-
+De-referencing/indirection is when you refer to the value that a pointer points to.
 
 - What are constant pointers? How are the different types used?
-
+Constant pointers are pointers that have a constant element - either what thing they point to can't be modified, or the thing they're pointing to can't be modified, or both. Useful when you want to control what can and can't be changed.
 
 - How do you pass a pointer into a function?
-
+Just put an asterisk after the variable type (ex. int*).
 
 - Why would you pass a pointer to a function?
-
+It lets the function modify variables directly, so that they are not lost when the function returns.
 
 - How do you compare pointers?
-
+Check if one is greater than the other using < or >. This returns which one takes up an earlier place in memory.
 
 - What is dynamic memory allocation?
-
+It's when you manage your own memory allocation, which lets you be as efficient as possible with storage space.
 
 - What is the Stack?
-
+An organized series of storage spaces used when creating variables normally.
 
 - What is the Heap?
-
+A place where you can allocate memory dynamically in whatever order you want.
 
 - What are smart pointers?
 They are pointers that clean up themselves. They have 2 types, unique and shared pointers. 
