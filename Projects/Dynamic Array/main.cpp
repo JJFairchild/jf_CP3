@@ -31,16 +31,17 @@ HOW TO SUBMIT:
 
 #include <iostream>
 #include <memory>
+#include <cctype>
 using namespace std;
 
 int capacity = 5;
 unique_ptr<string[]> stuff(new string[capacity]);
 int entries = 0;
 
-void check_size(){
+void check_size(){ // Function to check if the list is full and adds space if necessary.
     if (entries == capacity) {
         capacity += 5;
-        unique_ptr<string[]> temp(new string[capacity]);
+        unique_ptr<string[]> temp(new string[capacity]); // Creates a new array and moves the contents of "stuff."
         for (int i=0; i<entries; i++) {
             temp[i] = stuff[i];
         }
@@ -50,18 +51,19 @@ void check_size(){
 
 int main(){
 
-    while (true) {
+    while (true) { // Main loop, adds things to the list of stuff.
         string thing;
-        cout << "What media (book, comic, show, movie, etc.) do you want to add to your list? (type 'cancel' to quit): ";
+        cout << "What media (book, comic, show, movie, etc.) do you want to add to your list? (type 'done' to quit): ";
         getline(cin, thing);
-        if (thing == "cancel") break;
+        if (thing == "done") break; // exit mechanism
         stuff[entries] = thing;
         entries++;
         check_size();
     }
 
+    cout << "\nYour List:\n";
     for (int i=0; i<entries; i++) {
-        cout << stuff[i] << endl;
+        cout << "- " << stuff[i] << endl;
     }
 
     return 0;
