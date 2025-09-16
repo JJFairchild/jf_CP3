@@ -1,0 +1,29 @@
+Lesson 1: Structures
+LESSON I CAN: I CAN build custom structures in C++
+
+By the end of this lesson you will be able to:
+- Define structures
+- Create structures
+- Use pointers to access structures
+- Add information to a structure
+- Overload an operator
+
+State Standards: ***This is a UVU CS1410 requirement***
+
+INSTRUCTIONS:
+- Notes are taken during class and can be taken on paper, on a digital document, or in a specific folder in your programming files (VS Code and Github)
+
+QUESTIONS:
+- What are structures?
+A structure is a custom data type known as an ADT (abstract data type)
+
+- How do you build a structure?
+Initialize it like a variable using struct, although the variable name should be in PascalCase.
+
+- What can be held in a structure?
+You can make objects in a structure, and they are initialized like normal variables.
+
+- How do you access the information in a structure?
+Use the dot operator, for example: ClassName.variable
+
+- How do you overload an operator
