@@ -18,12 +18,13 @@ QUESTIONS:
 A structure is a custom data type known as an ADT (abstract data type)
 
 - How do you build a structure?
-Initialize it like a variable using struct, although the variable name should be in PascalCase.
+You use "struct StructName{}" and put stuff in the brackets. Structure names should be in PascalCase.
 
 - What can be held in a structure?
-You can make objects in a structure, and they are initialized like normal variables.
+You can make objects in a structure, and they are initialized like normal variables. Objects in structures should be in camelCase.
 
 - How do you access the information in a structure?
 Use the dot operator, for example: ClassName.variable
 
 - How do you overload an operator
+You make a new function with the name operator, followed by an operator (ex. bool operator==(parameters){code}).
