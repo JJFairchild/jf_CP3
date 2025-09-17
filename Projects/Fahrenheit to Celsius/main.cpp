@@ -11,8 +11,7 @@ By the end of this lesson you will be able to:
 - Describe the stream
 - Know when to create constant variables
 
-State Standards:
-***This is a UVU CS1410 requirement***
+State Standards: ***This is a UVU CS1410 requirement***
 
 INSTRUCTIONS:
 Write a program that takes in a temperature in Fahrenheit, converts it to Celcius and then prints for your user that the given temperature in Fahrenheit is the new amount in Celsius.

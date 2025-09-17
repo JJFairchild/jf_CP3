@@ -14,7 +14,8 @@ By the end of this lesson you will be able to:
 - Search and sort arrays
 - Create multi dimensional arrays
 
-State Standards:
+State Standards: ***This is a UVU CS1410 requirement***
+
 STRAND 3: Students will utilize multidimensional arrays
 
     STANDARD 1: Utilize multidimensional arrays
@@ -41,15 +42,6 @@ HOW TO SUBMIT:
 - Submit the link to your project on Github
 
 */
-
-/*
-
-TODO:
-- Function to randomly select a spot for O to play
-- 
-- Main loop (wait for user to select a spot to play, have the bot play, display the board, check if someone won)
-*/
-
 
 #include <iostream>
 #include <cstdlib>

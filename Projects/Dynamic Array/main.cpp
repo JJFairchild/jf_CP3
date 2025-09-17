@@ -10,8 +10,7 @@ By the end of this lesson you will be able to:
 - Use pointers in a program
 - Describe the benefits of pointers
 
-State Standards:
-***This is a UVU CS1410 requirement***
+State Standards: ***This is a UVU CS1410 requirement***
 
 INSTRUCTIONS:
 - Write a program that asks the user to enter books, movies, shows, colors, comics, etc. until they can't think of anymore. 

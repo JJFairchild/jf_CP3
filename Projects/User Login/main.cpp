@@ -10,8 +10,7 @@ By the end of this lesson you will be able to:
 - Create an array
 - Build a conditional to check an array
 
-State Standards:
-***This is a UVU CS1410 requirement***
+State Standards: ***This is a UVU CS1410 requirement***
 
 INSTRUCTIONS:
 - Write a program that takes in a user name and checks to see if that user is an admin, returning user, or a new user and then says hello to them accordingly. 
