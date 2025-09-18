@@ -58,55 +58,95 @@ vector<User> users = {
     {"Ian", "ian!123", "N"},
     {"Jade", "J@d3_Admin", "Y"}
 };
+string user = ""; // Current account the user is logged into. Not used for much.
 
-string user = "";
-void logIn(string name = "", string pass = "", string admin = ""){
+void logIn(){
+    if (user != ""){
+        user = "";
+        cout << "Successfully logged out.";
+    } else {
+        bool check = true;
 
-    bool user_exists;
-    for (int i = 0; i < size(users); i++){
-        if (users[i].name == name && users[i].pass == pass && users[i].admin == admin){
-            user_exists = true;
-            break;
+        while (check){
+            cout << "What is your username?: ";
+            string name;
+            cin >> name;
+
+            for (int i = 0; i < size(users); i++){
+                if (users[i].name == name){
+                    check = false;
+                    user = i;
+                    break;
+                }
+            }
+            if(check == true) cout << "Name not found. Try again." << endl;
         }
-        user_exists = false;
-    }
 
-    if (user_exists){
-        
+        check = true;
+
+        while (check){
+            cout << "What is your password?: ";
+            string pass;
+            cin >> pass;
+
+            if (users[user].pass != pass)
+        }
+        cout << "Successfully logged in." << endl;
     }
 }
 
 void createUser(){
-    string name = "";
-    string pass = "";
-    string admin = "";
+    if (user == ""){
+        bool check = false; // A value that is modified when checking whether a name is valid or not.
+        string name = "";
+        string pass = "";
+        string admin = "";
 
-    while(name == ""){
-        cout << "What do you want your username to be?" << endl;
-        cin >> name;
-        for (int i = 0; i < size(users); i++){
-            if (users[i].name == name){
-                ;
+        while(check){
+            check = false;
+            cout << "What do you want your username to be?" << endl;
+            cin >> name;
+
+            for (int i = 0; i < size(users); i++){ // Makes sure that the name the user gives isn't already used.
+                if (users[i].name == name){
+                    cout << "That name already exists. Try again." << endl;
+                    check = true;
+                }
             }
         }
-    }
 
-    cout << "What do you want your password to be?" << endl;
-    cin >> pass;
+        while(check){
+            check = false;
+            cout << "What do you want your password to be?" << endl;
+            cin >> name;
 
-    while (true) {
-        cout << "Are you an admin? (Y/N)";
-        cin >> admin;
-        if (admin == "Y" or admin == "N"){
-            break;
+            for (int i = 0; i < size(users); i++){
+                if (users[i].pass == pass){
+                    cout << "That password already exists. Try again." << endl;
+                    check = true;
+                }
+            }
         }
-        cout << "That's not a valid input. Type 'Y' or 'N'." << endl;
+
+        while (true) {
+            cout << "Are you an admin? (Y/N)";
+            cin >> admin;
+            if (admin == "Y" or admin == "N"){
+                break;
+            }
+            cout << "That's not a valid input. Type 'Y' or 'N'." << endl;
+        }
+
+        users.push_back({name, pass, admin});
+        user = name;
+    } else {
+        cout << "You are already logged in; you can't create an account right now.";
     }
 }
 
 int main(){
     while(true){
-        cout << "What do you want to do?\nLog in: 1\nCreate an account: 2\nExit: 3" << endl;
+        cout << "What do you want to do?\nLog in/out: 1\nCreate an account: 2\nExit: 3" << endl;
         int choice;
         cin >> choice;
 
