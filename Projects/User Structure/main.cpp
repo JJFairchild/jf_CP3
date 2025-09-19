@@ -68,7 +68,7 @@ vector<User> users = {
 int logIn(int user_index){
     if (user_index != -1){
         user_index = -1;
-        cout << "Successfully logged out.";
+        cout << "Successfully logged out." << endl;
     } else {
         bool check = true;
 
@@ -111,7 +111,7 @@ int createUser(int user_index){
 
         while(check){
             check = false;
-            cout << "What do you want your username to be?" << endl;
+            cout << "What do you want your username to be?: ";
             getline(cin, name);
 
             for (const auto& user : users){ // Makes sure that the name the user gives isn't already used.
@@ -123,11 +123,11 @@ int createUser(int user_index){
             }
         }
         
-        cout << "What do you want your password to be?" << endl;
+        cout << "What do you want your password to be?: ";
         getline(cin, pass);
 
         while (true) {
-            cout << "Are you an admin? (Y/N)";
+            cout << "Are you an admin? (Y/N): ";
             getline(cin, admin);
             if (admin == "Y" || admin == "N"){
                 break;
@@ -139,7 +139,7 @@ int createUser(int user_index){
         cout << "Successfully created a user profile. Welcome!\nYou are now logged in." << endl;
         user_index = users.size() - 1;
     } else {
-        cout << "You are already logged in; you can't create an account right now.";
+        cout << "You are already logged in; you can't create an account right now." << endl;
     }
     return user_index;
 }

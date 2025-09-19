@@ -6,8 +6,7 @@ By the end of this lesson you will be able to:
 - Create an array
 - Build a conditional to check an array
 
-State Standards:
-***This is a UVU CS1410 requirement***
+State Standards: ***This is a UVU CS1410 requirement***
 
 INSTRUCTIONS:
 - Notes are taken during class and can be taken on paper, on a digital document, or in a specific folder in your programming files (VS Code and Github)

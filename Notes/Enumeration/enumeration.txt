@@ -1,0 +1,38 @@
+Lesson 2: Enumeration
+LESSON I CAN: I CAN build custom structures in C++
+
+By the end of this lesson you will be able to:
+- Define enumeration
+- Build enumeration
+- What data type does enumeration automatically convert to?
+- How do you make a strongly typed enumerator
+
+State Standards: ***This is a UVU CS1410 requirement***
+
+INSTRUCTIONS:
+- Notes are taken during class and can be taken on paper, on a digital document, or in a specific folder in your programming files (VS Code and Github)
+
+QUESTIONS:
+- What is enumeration?
+It's when you make an enum and you declare options inside of it that correspond with values, so that when you want EnumName.OptionName you get its corresponding value.
+
+- How do you build enumeration?
+Type "enum EnumName{stuff}" and declare the options in the brackets.
+
+- How do we compare our enumerator?
+If you use == it will check if it's the same as the corresponding
+
+- Why does it matter that enumerators are constants??
+It's more readable and is better practice.
+
+- What is the default beginning enumerator? 
+The default enumerator is 0.
+
+- How do you give a different default value?
+All you have to do is set it equal to something else (eg. Option = 1)
+
+- What is a strongly typed enumerator?
+It's when you use "enum class" instead of just "enum" and it creates a different thing.
+
+- How are strongly typed enumerators different from a normal one?
+They have a lot stricter syntax but they give you more control.

@@ -6,8 +6,7 @@ By the end of this lesson you will be able to:
 - List reasons people are still learning C++ today
 - Set up my VS Code for C++ Programming
 
-State Standards:
-***This is a UVU CS1410 requirement***
+State Standards: ***This is a UVU CS1410 requirement***
 
 INSTRUCTIONS:
 Notes are taken during class and can be taken on paper, on a digital document, or in a specific folder in your programming files (VS Code and Github)

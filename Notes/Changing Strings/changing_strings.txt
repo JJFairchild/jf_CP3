@@ -8,8 +8,7 @@ By the end of this lesson you will be able to:
 - Convert the string to other data types
 - Use a raw string
 
-State Standards:
-***This is a UVU CS1410 requirement***
+State Standards: ***This is a UVU CS1410 requirement***
 
 INSTRUCTIONS:
 - Notes are taken during class and can be taken on paper, on a digital document, or in a specific folder in your programming files (VS Code and Github)
