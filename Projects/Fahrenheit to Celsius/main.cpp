@@ -17,7 +17,7 @@ INSTRUCTIONS:
 Write a program that takes in a temperature in Fahrenheit, converts it to Celcius and then prints for your user that the given temperature in Fahrenheit is the new amount in Celsius.
 
 OUTPUT EXAMPLE: 
-50 degrees Fahrenheit is 10 degrees Celsius
+    50 degrees Fahrenheit is 10 degrees Celsius
 
 KEY REMINDERS:
 - Remember you have to set your variable types

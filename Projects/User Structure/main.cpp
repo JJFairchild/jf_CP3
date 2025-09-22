@@ -18,12 +18,12 @@ INSTRUCTIONS:
 - It then needs to compare that user with a list of already existing users (10 users minimum) to see if the user already exists.
 
 OUTPUT EXAMPLE: 
-- User: Alex LaRose
-- Already exists. 
+    User: Alex LaRose
+    Already exists. 
 
 OR
-- Welcome
-- User: Alex LaRose
+    Welcome
+    User: Alex LaRose
 
 KEY REMINDERS:
 - Remember you have to set your variable types
