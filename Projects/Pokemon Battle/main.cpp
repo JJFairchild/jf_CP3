@@ -44,34 +44,56 @@ HOW TO SUBMIT:
 */
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
 struct Pokemon{
+
     const string name;
     const string type;
     
     // base_x and x are separated here because all used stats end up being multiplied by level.
     const int base_max_hp;
     const int base_speed; // Though not required, I included this to make it easier to decide which pokemon attacks first in battle. That's all this is used for.
-    const int base_attack_dmg;
-
-    int level = 1;
+    const vector<pair<string, int>> base_attacks;
 
     int max_hp;
-    int attack_dmg;
     int speed;
+    vector<pair<string, int>> attacks;
 
-    int hp = max_hp;
+    int hp;
+    int level;
 
     // Constructor to initialize all fields with the correct values.
-    Pokemon(string name, string type, int base_max_hp, int base_attack_dmg, int base_speed, int level = 1)
-        : name(name), type(type), base_max_hp(base_max_hp), base_attack_dmg(base_attack_dmg), base_speed(base_speed)
+    Pokemon(
+        const string& name, 
+        const string& type, 
+        const int& base_max_hp, 
+        const int& base_speed, 
+        const vector<pair<string, int>>& base_attacks,
+        int level = 1
+        )
+        : name(name), type(type), base_max_hp(base_max_hp), base_speed(base_speed), base_attacks(attacks), level(level)
     {
-        max_hp = base_max_hp * (0.1 * (level - 1) + 1), // The level multiplier here is not used except for playtesting, since level is 1 when it is initialized.
-        attack_dmg = base_attack_dmg * (0.1 * (level - 1) + 1),
-        speed = base_speed * (0.1 * (level - 1) + 1),
+        max_hp = base_max_hp * (0.1 * (level - 1) + 1); // The level multiplier here is not used except for playtesting, since level is 1 when it is initialized.
+        speed = base_speed * (0.1 * (level - 1) + 1);
+        for(int i = 0; i < base_attacks.size(); i++){
+            attacks.push_back({base_attacks[i].first, static_cast<int>(base_attacks[i].second * (0.1 * (level - 1) + 1))});
+        }
 
         hp = max_hp;
+    }
+
+    void printInfo() const {
+        cout << "Name: " << name << '\n';
+        cout << "Type: " << type << '\n';
+        cout << "Level: " << level << '\n';
+        cout << "HP: " << hp << "/" << max_hp << '\n';
+        cout << "Speed: " << speed << '\n';
+        cout << "Attacks:\n";
+        for (const auto& attack : attacks) {
+            cout << " - " << attack.first << " (Damage: " << attack.second << ")\n";
+        }
     }
 
     int battle(Pokemon opp){ // Opp being short for opponent
@@ -80,14 +102,25 @@ struct Pokemon{
 
         }
 
-        hp = max_hp;
+        hp = base_max_hp;
+        return 0;
     }
 };
 
-Pokemon lol = {"Pikachu", "Electric", 2, 2, 2};
+int main() {
+    Pokemon lol = {
+        "Pikachu",
+        "Electric",
+        144,
+        144,
+        {{"Thunder Shock", 40}, {"Quick Attack", 30}, {"Electro Ball", 50}},
+        5
+    };
 
+    lol.printInfo();  // <-- This is inside main() and works fine
 
-
+    return 0;
+}
 /*
 🔥 Fire Type
 1. Charizard
