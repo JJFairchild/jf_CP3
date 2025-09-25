@@ -45,7 +45,46 @@ HOW TO SUBMIT:
 
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 using namespace std;
+
+float findDmg(int attack_dmg, Pokemon self, Pokemon opp){ // Given that some Pokemon are more effective or resistant to others, this function calculates how much damage will be done based on the initial damage of the attack.
+        if(self.type == "Fire"){
+            if (opp.type == "Fire") return .5;
+            if (opp.type == "Water") return .5;
+            if (opp.type == "Grass") return 2;
+            if (opp.type == "Electric") return 1;
+            if (opp.type == "Dragon") return .5;
+
+        } else if (self.type == "Water"){
+            if (opp.type == "Fire") return 2;
+            if (opp.type == "Water") return .5;
+            if (opp.type == "Grass") return .5;
+            if (opp.type == "Electric") return 1;
+            if (opp.type == "Dragon") return .5;
+
+        } else if (self.type == "Grass"){
+            if (opp.type == "Fire") return .5;
+            if (opp.type == "Water") return 2;
+            if (opp.type == "Grass") return .5;
+            if (opp.type == "Electric") return 1;
+            if (opp.type == "Dragon") return .5;
+
+        } else if (self.type == "Electric"){
+            if (opp.type == "Fire") return 1;
+            if (opp.type == "Water") return 2;
+            if (opp.type == "Grass") return .5;
+            if (opp.type == "Electric") return .5;
+            if (opp.type == "Dragon") return .5;
+
+        } else if (self.type == "Dragon"){
+            if (opp.type == "Fire") return 1;
+            if (opp.type == "Water") return 1;
+            if (opp.type == "Grass") return 1;
+            if (opp.type == "Electric") return 1;
+            if (opp.type == "Dragon") return 2;
+        }
+    }
 
 struct Pokemon{
 
@@ -56,10 +95,12 @@ struct Pokemon{
     const int base_max_hp;
     const int base_speed; // Though not required, I included this to make it easier to decide which pokemon attacks first in battle. That's all this is used for.
     const vector<pair<string, int>> base_attacks;
+    const vector<pair<string, int>> base_heals;
 
     int max_hp;
     int speed;
     vector<pair<string, int>> attacks;
+    vector<pair<string, int>> heals;
 
     int hp;
     int level;
@@ -71,26 +112,30 @@ struct Pokemon{
         const int& base_max_hp, 
         const int& base_speed, 
         const vector<pair<string, int>>& base_attacks,
+        const vector<pair<string, int>>& base_heals,
         int level = 1
         )
-        : name(name), type(type), base_max_hp(base_max_hp), base_speed(base_speed), base_attacks(attacks), level(level)
+        : name(name), type(type), base_max_hp(base_max_hp), base_speed(base_speed), base_attacks(base_attacks), base_heals(base_heals), level(level)
     {
         max_hp = base_max_hp * (0.1 * (level - 1) + 1); // The level multiplier here is not used except for playtesting, since level is 1 when it is initialized.
         speed = base_speed * (0.1 * (level - 1) + 1);
         for(int i = 0; i < base_attacks.size(); i++){
             attacks.push_back({base_attacks[i].first, static_cast<int>(base_attacks[i].second * (0.1 * (level - 1) + 1))});
         }
+        for(int i = 0; i < base_heals.size(); i++){
+            heals.push_back({base_heals[i].first, static_cast<int>(base_heals[i].second * (0.1 * (level - 1) + 1))});
+        }
 
         hp = max_hp;
     }
 
     void printInfo() const {
-        cout << "Name: " << name << '\n';
-        cout << "Type: " << type << '\n';
-        cout << "Level: " << level << '\n';
-        cout << "HP: " << hp << "/" << max_hp << '\n';
-        cout << "Speed: " << speed << '\n';
-        cout << "Attacks:\n";
+        cout << "Name: " << name << endl;
+        cout << "Type: " << type << endl;
+        cout << "Level: " << level << endl;
+        cout << "HP: " << hp << "/" << max_hp << endl;
+        cout << "Speed: " << speed << endl;
+        cout << "Attacks:" << endl;
         for (const auto& attack : attacks) {
             cout << " - " << attack.first << " (Damage: " << attack.second << ")\n";
         }
@@ -107,192 +152,58 @@ struct Pokemon{
     }
 };
 
+unordered_map<string, Pokemon> pokedex = { // Unordered map (functions like a dict) of each Pokemon the user can find.
+    {"Charizard", {"Charizard", "Fire", 78, 85, 
+        {{"Flamethrower", 90}, {"Dragon Claw", 80}}, 
+        {{"Roost", 0.5}}}},
+        
+    {"Arcanine", {"Arcanine", "Fire", 90, 80, 
+        {{"Flare Blitz", 120}, {"Extreme Speed", 80}}, 
+        {{"Morning Sun", 0.5}}}},
+        
+    {"Blastoise", {"Blastoise", "Water", 79, 60, 
+        {{"Hydro Pump", 110}, {"Ice Beam", 90}}, 
+        {{"Life Dew", 0.25f}}}},
+        
+    {"Milotic", {"Milotic", "Water", 95, 65, 
+        {{"Surf", 90}, {"Dragon Pulse", 85}}, 
+        {{"Recover", 0.5}}}},
+        
+    {"Venusaur", {"Venusaur", "Grass", 80, 60, 
+        {{"Solar Beam", 120}, {"Sludge Bomb", 90}}, 
+        {{"Synthesis", 0.5}}}},
+        
+    {"Roserade", {"Roserade", "Grass", 60, 90, 
+        {{"Energy Ball", 90}, {"Toxic Spikes", 0}}, 
+        {{"Synthesis", 0.5}}}},
+        
+    {"Jolteon", {"Jolteon", "Electric", 65, 130, 
+        {{"Thunderbolt", 90}, {"Shadow Ball", 80}}, 
+        {{"Wish", 0.5}}}},
+        
+    {"Luxray", {"Luxray", "Electric", 80, 70, 
+        {{"Wild Charge", 90}, {"Crunch", 80}}, 
+        {{"Life Dew", 0.25f}}}},
+        
+    {"Dragonite", {"Dragonite", "Dragon", 91, 80, 
+        {{"Outrage", 120}, {"Hurricane", 110}}, 
+        {{"Roost", 0.5}}}},
+        
+    {"Haxorus", {"Haxorus", "Dragon", 76, 97, 
+        {{"Dragon Claw", 80}, {"Earthquake", 100}}, 
+        {{"Life Dew", 0.25f}}}}
+};
+
 int main() {
-    Pokemon lol = {
-        "Pikachu",
-        "Electric",
-        144,
-        144,
-        {{"Thunder Shock", 40}, {"Quick Attack", 30}, {"Electro Ball", 50}},
-        5
-    };
 
-    lol.printInfo();  // <-- This is inside main() and works fine
-
-    return 0;
 }
-/*
-🔥 Fire Type
-1. Charizard
 
-HP: 78
-
-Speed: 85
-
-Attacks:
-
-Flamethrower – 90 damage
-
-Dragon Claw – 80 damage
-
-Heal:
-
-Roost – Restores 50% of max HP
-
-2. Arcanine
-
-HP: 90
-
-Speed: 80
-
-Attacks:
-
-Flare Blitz – 120 damage (with recoil)
-
-Extreme Speed – 80 damage, always goes first
-
-Heal:
-
-Morning Sun – Heals 50% of max HP
-
-🌊 Water Type
-3. Blastoise
-
-HP: 79
-
-Speed: 60
-
-Attacks:
-
-Hydro Pump – 110 damage
-
-Ice Beam – 90 damage
-
-Heal:
-
-Life Dew – Heals 25% of max HP instantly
-
-4. Milotic
-
-HP: 95
-
-Speed: 65
-
-Attacks:
-
-Surf – 90 damage
-
-Dragon Pulse – 85 damage
-
-Heal:
-
-Recover – Heals 50% of max HP
-
-🌿 Grass Type
-5. Venusaur
-
-HP: 80
-
-Speed: 60
-
-Attacks:
-
-Solar Beam – 120 damage (can be charged or instant in sun)
-
-Sludge Bomb – 90 damage
-
-Heal:
-
-Synthesis – Heals 50% of max HP
-
-6. Roserade
-
-HP: 60
-
-Speed: 90
-
-Attacks:
-
-Energy Ball – 90 damage
-
-Toxic Spikes – (Non-damaging; sets poison hazard)
-
-Heal:
-
-Synthesis – Heals 50% of max HP
-
-⚡ Electric Type
-7. Jolteon
-
-HP: 65
-
-Speed: 130 ⚡ (Extremely fast — highest in list)
-
-Attacks:
-
-Thunderbolt – 90 damage
-
-Shadow Ball – 80 damage
-
-Heal:
-
-Wish – Heals 50% of max HP on next turn (not gradual)
-
-8. Luxray
-
-HP: 80
-
-Speed: 70
-
-Attacks:
-
-Wild Charge – 90 damage (with recoil)
-
-Crunch – 80 damage
-
-Heal:
-
-Life Dew – Heals 25% of max HP instantly
-
-🐉 Dragon Type
-9. Dragonite
-
-HP: 91
-
-Speed: 80
-
-Attacks:
-
-Outrage – 120 damage
-
-Hurricane – 110 damage
-
-Heal:
-
-Roost – Heals 50% of max HP
-
-10. Haxorus
-
-HP: 76
-
-Speed: 97
-
-Attacks:
-
-Dragon Claw – 80 damage
-
-Earthquake – 100 damage
-
-Heal:
-
-Life Dew – Heals 25% of max HP instantly
-*/
 
 /*
-Type Interaction	Damage Multiplier	Meaning
-✅ Strong Against	2×	Super effective – deal double damage
-🚫 Weak Against	0.5×	Not very effective – deal half damage
-🛡️ Resists	0.5×	Take half damage from this type
-🔻 Vulnerable To	2×	Take double damage from this type
-❌ Neutral	1×	No change in damage
+Type Interaction	    Damage Multiplier	Meaning
+✅ Strong Against	   2×	               Super effective – deal double damage
+🚫 Weak Against	        0.5×	            Not very effective – deal half damage
+🛡️ Resists	             0.5×	             Take half damage from this type
+🔻 Vulnerable To	    2×	                Take double damage from this type
+❌ Neutral	           1×	               No change in damage
 */
