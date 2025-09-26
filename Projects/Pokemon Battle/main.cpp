@@ -46,45 +46,9 @@ HOW TO SUBMIT:
 #include <iostream>
 #include <vector>
 #include <unordered_map>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
-
-float findDmg(int attack_dmg, Pokemon self, Pokemon opp){ // Given that some Pokemon are more effective or resistant to others, this function calculates how much damage will be done based on the initial damage of the attack.
-        if(self.type == "Fire"){
-            if (opp.type == "Fire") return .5;
-            if (opp.type == "Water") return .5;
-            if (opp.type == "Grass") return 2;
-            if (opp.type == "Electric") return 1;
-            if (opp.type == "Dragon") return .5;
-
-        } else if (self.type == "Water"){
-            if (opp.type == "Fire") return 2;
-            if (opp.type == "Water") return .5;
-            if (opp.type == "Grass") return .5;
-            if (opp.type == "Electric") return 1;
-            if (opp.type == "Dragon") return .5;
-
-        } else if (self.type == "Grass"){
-            if (opp.type == "Fire") return .5;
-            if (opp.type == "Water") return 2;
-            if (opp.type == "Grass") return .5;
-            if (opp.type == "Electric") return 1;
-            if (opp.type == "Dragon") return .5;
-
-        } else if (self.type == "Electric"){
-            if (opp.type == "Fire") return 1;
-            if (opp.type == "Water") return 2;
-            if (opp.type == "Grass") return .5;
-            if (opp.type == "Electric") return .5;
-            if (opp.type == "Dragon") return .5;
-
-        } else if (self.type == "Dragon"){
-            if (opp.type == "Fire") return 1;
-            if (opp.type == "Water") return 1;
-            if (opp.type == "Grass") return 1;
-            if (opp.type == "Electric") return 1;
-            if (opp.type == "Dragon") return 2;
-        }
-    }
 
 struct Pokemon{
 
@@ -140,16 +104,6 @@ struct Pokemon{
             cout << " - " << attack.first << " (Damage: " << attack.second << ")\n";
         }
     }
-
-    int battle(Pokemon opp){ // Opp being short for opponent
-
-        while (hp != 0 && opp.hp != 0){
-
-        }
-
-        hp = base_max_hp;
-        return 0;
-    }
 };
 
 unordered_map<string, Pokemon> pokedex = { // Unordered map (functions like a dict) of each Pokemon the user can find.
@@ -174,7 +128,7 @@ unordered_map<string, Pokemon> pokedex = { // Unordered map (functions like a di
         {{"Synthesis", 0.5}}}},
         
     {"Roserade", {"Roserade", "Grass", 60, 90, 
-        {{"Energy Ball", 90}, {"Toxic Spikes", 0}}, 
+        {{"Energy Ball", 90}, {"Dazzling Gleam", 80}}, 
         {{"Synthesis", 0.5}}}},
         
     {"Jolteon", {"Jolteon", "Electric", 65, 130, 
@@ -194,8 +148,69 @@ unordered_map<string, Pokemon> pokedex = { // Unordered map (functions like a di
         {{"Life Dew", 0.25f}}}}
 };
 
-int main() {
+float findDmg(int attack_dmg, Pokemon* self, Pokemon* opp){ // Given that some Pokemon are more effective or resistant to others, this function calculates how much damage will be done based on the initial damage of the attack.
+    if(self->type == "Fire"){
+        if (opp->type == "Fire") return .5;
+        if (opp->type == "Water") return .5;
+        if (opp->type == "Grass") return 2;
+        if (opp->type == "Electric") return 1;
+        if (opp->type == "Dragon") return .5;
+    } else if (self->type == "Water"){
+        if (opp->type == "Fire") return 2;
+        if (opp->type == "Water") return .5;
+        if (opp->type == "Grass") return .5;
+        if (opp->type == "Electric") return 1;
+        if (opp->type == "Dragon") return .5;
+    } else if (self->type == "Grass"){
+        if (opp->type == "Fire") return .5;
+        if (opp->type == "Water") return 2;
+        if (opp->type == "Grass") return .5;
+        if (opp->type == "Electric") return 1;
+        if (opp->type == "Dragon") return .5;
+    } else if (self->type == "Electric"){
+        if (opp->type == "Fire") return 1;
+        if (opp->type == "Water") return 2;
+        if (opp->type == "Grass") return .5;
+        if (opp->type == "Electric") return .5;
+        if (opp->type == "Dragon") return .5;
+    } else if (self->type == "Dragon"){
+        if (opp->type == "Fire") return 1;
+        if (opp->type == "Water") return 1;
+        if (opp->type == "Grass") return 1;
+        if (opp->type == "Electric") return 1;
+        if (opp->type == "Dragon") return 2;
+    }
+}
 
+int battle(Pokemon self, Pokemon opp){
+
+        Pokemon* p1 = &self;
+        Pokemon* p2 = &opp;
+
+        if (p1->speed < p2->speed){ // Makes sure that the pokemon will play in the correct order by rearranging them based on speed.
+            Pokemon* temp = p1;
+            p1 = p2;
+            p2 = temp;
+        }
+        cout << p1->name << " attacks first thanks to its superior Speed!" << endl;
+
+        while (p1->hp != 0 && p2->hp != 0){
+            pair<string, int> attack1 = p1->attacks[rand() % 2];;
+
+            cout << p1->name << " has used " << attack1.first << "!" << endl;
+            int attack1_dmg = attack1.second * ((rand() % 16 + 85) / 100.0f) * fingDmg(p1, p2); // Applies random variation and type-specific damage
+
+            
+        }
+        return 0;
+}
+
+int main() {
+    srand(time(nullptr));
+
+
+
+    return 0;
 }
 
 
