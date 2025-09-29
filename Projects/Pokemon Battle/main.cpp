@@ -224,7 +224,7 @@ pair<string, double> getMove(Pokemon self){ // Gets the move the user wants to p
         }
         cout << "Healing moves:" << endl;
         for (const auto& heal : self.heals) {
-            cout << " - " << heal.first << " (Health regained: " << heal.second * self.hp << "{scales with current HP})" << endl;
+            cout << " - " << heal.first << " (Health regained: " << heal.second * self.hp << " {scales with current HP})" << endl;
         }
 
         string move;

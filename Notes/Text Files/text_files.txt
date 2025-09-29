@@ -1,0 +1,60 @@
+Lesson 1: Streams and Txt
+LESSON I CAN: I CAN use read and write to TXT and CSV files
+
+By the end of this lesson you will be able to:
+- Explain how streams work
+- Read and write to a txt file
+- Read and write to a csv file
+
+State Standards: ***This is a UVU CS1410 requirement***
+
+INSTRUCTIONS:
+- Notes are taken during class and can be taken on paper, on a digital document, or in a specific folder in your programming files (VS Code and Github)
+
+QUESTIONS:
+- What are the 3 main sources of data for a program
+The terminal, files, and networks.
+
+- What are streams?
+They are sources or destinations of data.
+
+- What are the different streams we might need to include in a program? 
+istream, ostream (iostream)
+
+- What is the base class for all streams?
+int
+
+- What is buffer?
+A temporary storage in memory for data being transferred.
+
+- How do you clear the buffer?
+Using cin.ignore(numeric_limits<streamsize>::max()).
+
+- How do you handle invalid inputs from the terminal
+Catch it with cin.fail() and then erase the invalid input with cin.clear(); and cin.ignore(numeric_limits<streamsize>::max(), '\n');.
+
+- What streams are for files specifically
+ifstream, ofstream, and fstream
+
+- How do you write to a text file?
+
+
+- What do stream manipulators let us do?
+They let you change the way you write to files.
+
+- How do you write to a CSV?
+In the same way you write to a text file, but organized with commas.
+
+- How do you read a text file?
+
+
+- How do you read a CSV file?
+
+
+- What is a delimiter?
+
+
+- How do you read an entire CSV?
+
+
+- How do you turn items from a CSV into objects of a structure?
