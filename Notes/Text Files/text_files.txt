@@ -37,7 +37,7 @@ Catch it with cin.fail() and then erase the invalid input with cin.clear(); and 
 ifstream, ofstream, and fstream
 
 - How do you write to a text file?
-
+You need to #include <fstream> and run ofstream file, then do file.open(x) where x is the name of the file you want to run, then after checking whether the file is open you can manipulate the text file.
 
 - What do stream manipulators let us do?
 They let you change the way you write to files.
@@ -52,7 +52,7 @@ In the same way you write to a text file, but organized with commas.
 
 
 - What is a delimiter?
-
+A special character that is used to determine when your getline() stops.
 
 - How do you read an entire CSV?
 

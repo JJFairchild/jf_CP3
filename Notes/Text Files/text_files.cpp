@@ -4,7 +4,15 @@
 #include <limits>
 #include <fstream>
 #include <iomanip>
+#include <string>
+#include <vector>
 using namespace std;
+
+struct Movie{
+    int id;
+    string title;
+    int year;
+};
 
 int getNumber(const string& prompt){
     int num;
@@ -33,7 +41,7 @@ int main(){
     int first = getNumber("Tell me a number: ");
     int second = getNumber("Tell me another number: ");
 
-    cout << "You entered " << first << " and " << second;
+    cout << "You entered " << first << " and " << second << endl;
 
     /*
     ifstream > input files stream
@@ -41,21 +49,59 @@ int main(){
     fstream >< combines the functionality
     */
 
-    ofstream file;
-    file.open("data.txt");
-    if(file.is_open()){
-        file << setw(20) << "Hello " << setw(20) << "World";
-        file.close();
+    ofstream ofile;
+    ofile.open("data.txt");
+    if(ofile.is_open()){
+        ofile << setw(20) << "Hello " << setw(20) << "World";
+        ofile.close();
     }
-
-    file.open("data.csv");
-    if(file.is_open()){
-        file << "id, title, year\n" <<
-        "1, Terminator, 1984\n" <<
-        "2, Terminator 2, 1991\n";
-        file.close();
+    
+    ifstream ifile;
+    ifile.open("data.txt");
+    if(ifile.is_open()){
+        string str;
+        getline(ifile, str);
+        cout << str << endl;
+        ifile.close();
     }
     
 
+    ofile.open("data.csv");
+    if(ofile.is_open()){
+        ofile <<
+        "id, title, year\n" <<
+        "1, Terminator, 1984\n" <<
+        "2, Terminator 2, 1991\n";
+        ofile.close();
+    }
+    ifile.open("data.csv");
+    if(ifile.is_open()){
+        vector <Movie> movies;
+        string str;
+
+        getline(ifile, str);
+
+        while(!ifile.eof()){
+            getline(ifile, str, ',');
+            if(str.empty()) continue;
+            Movie movie;
+            movie.id = stoi(str);
+
+            getline(ifile, str, ',');
+            movie.title = str;
+
+            getline(ifile, str);
+            movie.year = stoi(str);
+
+            movies.push_back(movie);
+        }
+        
+        for(auto& movie : movies){
+            cout << movie.id << ", " << movie.title << ", " << movie.year << endl;
+        }
+
+        ifile.close();
+    }
+    
     return 0;
 }
