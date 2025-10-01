@@ -37,7 +37,7 @@ Catch it with cin.fail() and then erase the invalid input with cin.clear(); and 
 ifstream, ofstream, and fstream
 
 - How do you write to a text file?
-You need to #include <fstream> and run ofstream file, then do file.open(x) where x is the name of the file you want to run, then after checking whether the file is open you can manipulate the text file.
+You need to #include <fstream> and run ofstream ofile, then do ofile.open(x) where x is the name of the file you want to run, then after checking whether the file is open you can manipulate the text file.
 
 - What do stream manipulators let us do?
 They let you change the way you write to files.
@@ -46,15 +46,16 @@ They let you change the way you write to files.
 In the same way you write to a text file, but organized with commas.
 
 - How do you read a text file?
-
+You need to run ifstream ifile, then ifile.open(x) where x is the file name, then after checking if it's actually open you can read the text file with getline() and whatnot.
 
 - How do you read a CSV file?
-
+Same way you read from a text file, but you have to account for comma-separated lines.
 
 - What is a delimiter?
 A special character that is used to determine when your getline() stops.
 
 - How do you read an entire CSV?
-
+You loop through it using a while loop and getline() for each row.
 
 - How do you turn items from a CSV into objects of a structure?
+You need to get a line from the csv, break it into the correct pieces, then assign them to the objects of the structure.
