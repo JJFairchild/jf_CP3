@@ -11,6 +11,8 @@
         "sstream": "cpp",
         "array": "cpp",
         "string_view": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "string": "cpp",
+        "format": "cpp"
     }
 }
