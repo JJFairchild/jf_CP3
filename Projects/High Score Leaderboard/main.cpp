@@ -55,7 +55,7 @@ OUTPUT EXAMPLE:
 KEY REMINDERS:
 - Use appropriate data structures, such as struct or class, to store the high score data.
 - When adding a new score, insert it into the list, and sort based on scores if necessary.
- -When the program starts, read existing high scores from a text file (e.g., highscores.txt) and load them into memory.
+- When the program starts, read existing high scores from a text file (e.g., highscores.txt) and load them into memory.
 - When the program exits, save the current high scores back to the file, overwriting previous data if needed.
 - Use fstream for file input/output, and ensure proper opening, reading, writing, and closing files.
 - Implement input validation for menu choices, scores, and date formats.
@@ -65,8 +65,17 @@ HOW TO SUBMIT:
 - Submit the link to your project on Github
 */
 
+/*
+TODO:
+- Function to sort hscores based on score
+- Display Function
+*/
+
 #include <iostream>
 #include <limits>
+#include <vector>
+#include <fstream>
+#include <iomanip>
 using namespace std;
 
 enum MainMenu{
@@ -87,7 +96,8 @@ struct HighScore{
     Date date;
 };
 
-int getNum(const string& prompt, const string& error, int max, int min){
+int getNum(const string& prompt, int max, int min){
+
     int num;
     while (true){
         cout << prompt;
@@ -97,26 +107,95 @@ int getNum(const string& prompt, const string& error, int max, int min){
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         } else if (num > max || num < min){
-            cout << error << endl;
+            cout << "That isn't in the valid range (min: " << min << ", max: " << max << "). Try again.\n";
         } else return num;
     }
 }
 
-string getStr(const string& prompt){
+string getStr(const string& prompt, int max){
+
     string str;
     while (true){
         cout << prompt;
-        cin >> str;
+        getline(cin, str);
         if(str.empty()) cout << "You have to type something. Try again.\n";
+        else if (str.size() > max) cout << "That's too long. (max: " << max << " chars) Try again.";
         else return str;
     }
 }
 
 HighScore getHS(){
-    string player = getStr("What is the name of your player?: ");
+
+    string player = getStr("What is the name of your player?: ", 15);
+    int score = getNum("What score did you get?: ", 0, 10000);
+    int month = getNum("What month (number) did you get the score?: ", 1, 12);
+    int day = getNum("What day of the month did you get the score?: ", 1, 31);
+    int year = getNum("What year did you get the score?: ", 2025, 2025);
+
+    Date date = {month, day, year};
+    HighScore hs = {player, score, date};
+    return hs;
+}
+
+void display(vector <HighScore> hscores){
+
+     
+}
+
+vector<HighScore> readScores(){
+
+    ifstream file("high_scores.csv");
+
+    string line;
+    vector <HighScore> hscores;
+
+    if (file.is_open()){
+
+        getline(file, line);
+
+        while (getline(file, line)){
+            istringstream iss(line);
+            string item;
+            HighScore hs;
+            Date date;
+
+            getline(iss, item, ',');
+            hs.player = item;
+            getline(iss, item, ',');
+            hs.score = stoi(item);
+            getline(iss, item, ',');
+            date.month = stoi(item);
+            getline(iss, item, ',');
+            date.day = stoi(item);
+            getline(iss, item, ',');
+            date.year = stoi(item);
+
+            hs.date = date;
+            hscores.push_back(hs);
+        }
+
+        file.close();
+    }
+
+    return hscores;
+}
+
+void writeScores(vector <HighScore> hscores) {
+
+    ofstream file("high_scores.csv");
+
+    if(file.is_open()){
+        file << "player,score,month,day,year\n";
+        for (auto& hs : hscores){
+            file << hs.player << "," << hs.score << "," << hs.date.month << "," << hs.date.day << "," << hs.date.year << endl;
+        }
+        file.close();
+    }
 }
 
 int main(){
+
+    vector<HighScore> hscores = readScores();
 
     while (true){
         int choice;
@@ -132,11 +211,12 @@ int main(){
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         } else if (choice == MainMenu::Add){
-            // Run add function
+            hscores.push_back(getHS());
+            cout << "Successfully added score.\n";
         } else if (choice == MainMenu::Display){
             // Run display function
         } else if (choice == MainMenu::Exit){
-            // Save data
+            writeScores(hscores);
             break;
         } else {
             cout << "That's not an option. Try again.\n";
