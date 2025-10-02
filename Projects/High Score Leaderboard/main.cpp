@@ -76,6 +76,8 @@ TODO:
 #include <vector>
 #include <fstream>
 #include <iomanip>
+#include <string>
+#include <sstream>
 using namespace std;
 
 enum MainMenu{
@@ -96,19 +98,21 @@ struct HighScore{
     Date date;
 };
 
-int getNum(const string& prompt, int max, int min){
+int getNum(const string& prompt, int min, int max){
 
+    string line;
     int num;
     while (true){
         cout << prompt;
-        getline(cin, num);
-        if (cin.fail()){
+        getline(cin, line);
+        try{
+            num = stoi(line);
+            if (num > max || num < min){
+                cout << "That isn't in the valid range (min: " << min << ", max: " << max << "). Try again.\n";
+            } else return num;
+        } catch (...) {
             cout << "That's not a valid input. Try again.\n";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        } else if (num > max || num < min){
-            cout << "That isn't in the valid range (min: " << min << ", max: " << max << "). Try again.\n";
-        } else return num;
+        }
     }
 }
 
@@ -137,14 +141,41 @@ HighScore getHS(){
     return hs;
 }
 
-void display(vector <HighScore> hscores){
+vector <HighScore> sortScores(vector <HighScore> hscores){
 
-     
+    vector <HighScore> sorted;
+
+    for (auto& hs : hscores){
+        auto i = sorted.begin();
+        while (i != sorted.end() && i->score > hs.score) i++;
+        sorted.insert(i, hs);
+    }
+
+    return sorted;
+}
+
+string spaces(int spacect){
+    return string(spacect, ' ');
+}
+
+void display(vector <HighScore> hscores){
+    if (!hscores.empty()){
+        hscores = sortScores(hscores);
+
+        cout << "Player          | Score | Date\n";
+
+        for(auto& hs : hscores){
+            cout << 
+            left << setw(15) << hs.player << " | " << 
+            right << setw(5) << hs.score << " | " << 
+            hs.date.month << "/" << hs.date.day << "/" << hs.date.year << "\n";
+        }
+    } else cout << "There are no scores to display.\n";
 }
 
 vector<HighScore> readScores(){
 
-    ifstream file("high_scores.csv");
+    ifstream file("scores.csv");
 
     string line;
     vector <HighScore> hscores;
@@ -182,7 +213,7 @@ vector<HighScore> readScores(){
 
 void writeScores(vector <HighScore> hscores) {
 
-    ofstream file("high_scores.csv");
+    ofstream file("scores.csv");
 
     if(file.is_open()){
         file << "player,score,month,day,year\n";
@@ -198,28 +229,30 @@ int main(){
     vector<HighScore> hscores = readScores();
 
     while (true){
+        string line;
         int choice;
         cout <<
         "\nWhat do you want to do?\n" <<
         "1: Add a new high score\n" <<
         "2: View high scores\n" <<
         "3: Save and exit\n";
-        getline(cin, choice);
+        getline(cin, line);
 
-        if(cin.fail()){
-            cout << "That's not a valid input. Try again.\n";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        } else if (choice == MainMenu::Add){
-            hscores.push_back(getHS());
-            cout << "Successfully added score.\n";
-        } else if (choice == MainMenu::Display){
-            // Run display function
-        } else if (choice == MainMenu::Exit){
-            writeScores(hscores);
-            break;
-        } else {
-            cout << "That's not an option. Try again.\n";
+        try{
+            choice = stoi(line);
+            if (choice == MainMenu::Add){
+                hscores.push_back(getHS());
+                cout << "Successfully added score.\n";
+            } else if (choice == MainMenu::Display){
+                display(hscores);
+            } else if (choice == MainMenu::Exit){
+                writeScores(hscores);
+                break;
+            } else {
+                cout << "That's not an option. Try again.\n";
+            }
+        } catch (...) {
+            cout << "Invalid input. Try again.\n";
         }
     }
 
