@@ -32,30 +32,31 @@ You use the stringstream to assign the information to a variable, ex. string str
 You should use getline().
 
 - Why might extra zeros be added to a string when converting a value without control?
-
+It fills in space to be exactly the size that the variable type is.
 
 - How does controlling the string conversion process benefit your program?
-
+It lets you convert strings to the data types your program can use
 
 - Give an example scenario where parsing a string would be necessary in a program.
 Separating "Terminator 1,1984" into seperate variables is useful.
 
 - When writing to a binary file, what does the first parameter (reinterpret_cast<char*>(&numbers)) represent?
-
+It represents when we convert to and from binary.
 
 - Why does the binary file only take 12 bytes while the array of integers might be larger?
-
+Binary, by definition, will take less space than any data type.
 
 - What is the main difference between sequential search and binary search?
-
+Binary search will only search an ordered list and is more efficient, while sequential search can search any list but takes longer.
 
 - In which type of data structure is binary search most efficient?
-
+If your information is a large, ordered list, binary search will work best.
 
 - What is a key requirement for binary search to work correctly on a list?
-
+The list has to be sorted.
 
 - How does sequential search find an item in a list?
-
+It checks the halfway point to see if the value is smaller or larger, then cuts off the half of the list that it can't be in, then repeats that process until it finds the item.
 
 - Why is binary search generally faster than sequential search for large, sorted lists?
+It makes fewer comparisons
