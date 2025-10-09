@@ -40,15 +40,42 @@ struct Movie{
     string rating;
 };
 
+string getString(string message){
+
+    string str;
+
+    while(true){
+        cout << message;
+        getline(cin, str);
+        if(!str.empty()) return str;
+        else cout << "You have to type something. Try again.\n";
+    }
+}
+
+int getInt(string message, int min, int max){
+
+    string line;
+    int num;
+
+    while(true){
+        cout << message;
+        getline(cin, line);
+        try{
+            num = stoi(line);
+            if(num <= max && num >= min) return num;
+            else cout << "That's not in the valid range (min: " << min << ", max: " << max << "). Try again.\n";
+        } catch (...){
+            cout << "That's not a valid input. Try again.\n";
+        }
+    }
+}
+
 string getLib(){
 
-    string filename;
-    cout << "Input your library's file name: ";
-    getline(cin, filename);
+    string filename = getString("Input your library's file name: ");
     ifstream file(filename);
 
     if (file) {
-        cout << "Successfully added library." << endl;
         return filename;
     } else {
         cout << "Sorry, couldn't find that file.\n";
@@ -57,6 +84,7 @@ string getLib(){
 }
 
 vector<Movie> readLib(string filename){
+
     vector <Movie> movies;
 
     try{
@@ -88,6 +116,7 @@ vector<Movie> readLib(string filename){
             }
 
             file.close();
+            cout << "Successfully added library." << endl;
         }
     } catch (...){
         cout << "Unable to read the given library. Ensure it is a csv and follows the proper format (title, director, year, genre, rating).\n";
@@ -95,23 +124,56 @@ vector<Movie> readLib(string filename){
     return movies;
 }
 
-void displayMov(vector<Movie> movies){
-    for(auto& movie : movies){
-        cout << 
-        "- " << movie.title <<
-        "\n\t- " << ;
+void writeLib(vector<Movie> movies, string filename){
+
+    ofstream file(filename);
+    if(file.is_open()){
+        file << "title,director,year,genre,rating\n";
+
+        for(auto& movie : movies){
+            file << movie.title << "," << movie.dir << "," << movie.year << "," << movie.genre << "," << movie.rating << endl;
+        }
     }
 }
 
-vector<string> seqSearch(vector<string> movies, string search){
+void displayMov(vector<Movie> movies, string message){
+    if(!movies.empty()){
+        cout << message << endl;
+        for(auto& movie : movies){
+            cout << 
+            "- " << movie.title <<
+            "\n\tDirector: " << movie.dir <<
+            "\n\tRelease year: " << movie.year <<
+            "\n\tGenre: " << movie.genre <<
+            "\n\tRating: " << movie.rating << endl;
+        }
+    } else cout << "You haven't assigned a library or the movies list is empty.\n";
+}
 
+vector<Movie> seqSearch(vector<Movie> movies, string search){
+    int field = getInt(R"(
+Select a field:
+1: Title
+2: Director
+3: Year
+4: Genre
+5: Rating
+)", 1, 5);
+    
+    
+}
+
+Movie createMov(){
+    Movie movie;
+    
 }
 
 enum MainMenu{
     SelectLib = 1,
     ViewMov,
-    DelMov,
     SearchMov,
+    AddMov,
+    DelMov,
     Exit
 };
 
@@ -121,40 +183,36 @@ int main(){
     vector<Movie> movies;
 
     while(true){
-        string line;
-        cout <<
-        "\nWhat do you want to do?\n" <<
-        "1: Select a movie library\n" <<
-        "2: View the movie list\n" <<
-        "3: Delete a movie\n" <<
-        "4: Search the movie list\n" <<
-        "5: Save and exit\n";
-        getline(cin, line);
+        
+        int choice = getInt(R"(
+What do you want to do?
+1: Select a movie library
+2: View the movie list
+3: Search the movie list
+4: Add a movie
+5: Remove a movie
+6: Save and exit
+)", 1, 6);        
 
-        try{
-            int choice = stoi(line);
-
-            if (choice = MainMenu::SelectLib){
-                string lib = getLib();
-                if (!lib.empty()){
-                    library = lib;
-
-                    movies = readLib(library);
-                }
-            } else if (choice = MainMenu::ViewMov){
-
-            } else if (choice = MainMenu::DelMov){
-
-            } else if (choice = MainMenu::SearchMov){
-
-            } else if (choice = MainMenu::Exit){
-                break;
-            } else {
-                cout << "That's not an option. Try again.\n";
+        if (choice == MainMenu::SelectLib){
+            string lib = getLib();
+            if (!lib.empty()){
+                library = lib;
+                movies = readLib(library);
             }
-        } catch(...){
-            cout << "Invalid input. Try again.\n";
+        } else if (choice == MainMenu::ViewMov){
+            displayMov(movies, "Movie list:");
+        } else if (choice == MainMenu::SearchMov){
+
+        } else if (choice == MainMenu::AddMov){
+
+        } else if (choice == MainMenu::DelMov){
+
+        } else if (choice == MainMenu::Exit){
+            writeLib(movies, library);
+            break;
         }
+
     }
 
     return 0;
