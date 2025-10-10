@@ -30,12 +30,31 @@ HOW TO SUBMIT:
 #include <iomanip>
 #include <sstream>
 #include <string>
+#include <algorithm>
+#include <cctype>
 using namespace std;
+
+enum MainMenu{
+    SelectLib = 1,
+    ViewMov,
+    SearchMov,
+    AddMov,
+    DelMov,
+    Exit
+};
+
+enum SearchMenu{
+    Title = 1,
+    Dir,
+    Year,
+    Genre,
+    Rating
+};
 
 struct Movie{
     string title;
     string dir;
-    int year;
+    string year;
     string genre;
     string rating;
 };
@@ -70,6 +89,12 @@ int getInt(string message, int min, int max){
     }
 }
 
+string toLower(string str) {
+    string result = str;
+    transform(result.begin(), result.end(), result.begin(), ::tolower);
+    return result;
+}
+
 string getLib(){
 
     string filename = getString("Input your library's file name: ");
@@ -99,20 +124,20 @@ vector<Movie> readLib(string filename){
             while (getline(file, line)){
                 istringstream iss(line);
                 string item;
-                Movie mov;
+                Movie movie;
 
                 getline(iss, item, ',');
-                mov.title = item;
+                movie.title = item;
                 getline(iss, item, ',');
-                mov.dir = item;
+                movie.dir = item;
                 getline(iss, item, ',');
-                mov.year = stoi(item);
+                movie.year = item;
                 getline(iss, item, ',');
-                mov.genre = item;
+                movie.genre = item;
                 getline(iss, item, ',');
-                mov.rating = item;
+                movie.rating = item;
 
-                movies.push_back(mov);
+                movies.push_back(movie);
             }
 
             file.close();
@@ -136,22 +161,25 @@ void writeLib(vector<Movie> movies, string filename){
     }
 }
 
-void displayMov(vector<Movie> movies, string message){
+void display(vector<Movie> movies){
     if(!movies.empty()){
-        cout << message << endl;
         for(auto& movie : movies){
             cout << 
             "- " << movie.title <<
             "\n\tDirector: " << movie.dir <<
             "\n\tRelease year: " << movie.year <<
             "\n\tGenre: " << movie.genre <<
-            "\n\tRating: " << movie.rating << endl;
+            "\n\tRating: " << movie.rating << "\n\n";
         }
-    } else cout << "You haven't assigned a library or the movies list is empty.\n";
+    } else cout << "The movies list is empty, or you haven't assigned a library.\n";
 }
 
-vector<Movie> seqSearch(vector<Movie> movies, string search){
-    int field = getInt(R"(
+vector<Movie> search(vector<Movie> movies){
+
+    vector<Movie> results;
+
+    if(!movies.empty()){
+        int field = getInt(R"(
 Select a field:
 1: Title
 2: Director
@@ -159,23 +187,89 @@ Select a field:
 4: Genre
 5: Rating
 )", 1, 5);
-    
-    
+
+        string search = toLower(getString("What do you want to search for?: "));
+        
+        for(auto& movie : movies){
+            string field_val;
+            
+            if(field == SearchMenu::Title) field_val = toLower(movie.title);
+            else if(field == SearchMenu::Dir) field_val = toLower(movie.dir);
+            else if(field == SearchMenu::Year) field_val = toLower(movie.year);
+            else if(field == SearchMenu::Genre) field_val = toLower(movie.genre);
+            else if(field == SearchMenu::Rating) field_val = toLower(movie.rating);
+            
+            if(field_val.find(search) != string::npos) {
+                results.push_back(movie);
+            }
+        }
+    } else cout << "The movies list is empty, or you haven't assigned a library.\n";
+
+    return results;
 }
 
 Movie createMov(){
     Movie movie;
-    
+    movie.title = getString("What is the title of the movie?: ");
+    movie.dir = getString("Who was the director of the movie?: ");
+    movie.year = to_string(getInt("What year was it published?: ", 1888, 2025));
+    movie.genre = getString("What genre is the movie?: ");
+    movie.rating = getString("What is the movie's rating?: ");
+    return movie;
 }
 
-enum MainMenu{
-    SelectLib = 1,
-    ViewMov,
-    SearchMov,
-    AddMov,
-    DelMov,
-    Exit
-};
+vector<Movie> delMov(vector<Movie> movies){
+
+    if (!movies.empty()){
+        cout << "Search for a movie to delete:\n";
+        vector<Movie> movs_d = search(movies);
+
+        if (movs_d.empty()) {
+            cout << "No matching movies found.\n";
+            return movies;
+        }
+
+        while(true){
+            cout << "Search results:\n";
+            display(movs_d);
+
+            string del = toLower(getString("What movie do you want to delete? (type 'cancel' to exit): "));
+
+            if (del == "cancel") {
+                cout << "Deletion cancelled.\n";
+                break;
+            }
+
+            // Check if a matching movie exists in movs_d
+            bool found = false;
+            for (auto& m : movs_d) {
+                if (toLower(m.title) == del) {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                cout << "No movie with that title found in search results. Try again.\n";
+                continue;
+            }
+
+            // Remove the movie from the original list
+            movies.erase(
+                remove_if(movies.begin(), movies.end(),
+                    [del](const Movie& m) {
+                        return toLower(m.title) == del;
+                    }),
+                movies.end()
+            );
+
+            cout << "Movie deleted successfully.\n";
+            break;
+        }
+    } else cout << "The movies list is empty, or you haven't assigned a library.\n";
+
+    return movies;
+}
 
 int main(){
 
@@ -201,15 +295,21 @@ What do you want to do?
                 movies = readLib(library);
             }
         } else if (choice == MainMenu::ViewMov){
-            displayMov(movies, "Movie list:");
+            if (!movies.empty()) cout << "Movie list:\n";
+            display(movies);
         } else if (choice == MainMenu::SearchMov){
-
+            vector<Movie> movs_s = search(movies);
+            if (!movs_s.empty()){
+                cout << "Search results:\n";
+                display(movs_s);
+            }
         } else if (choice == MainMenu::AddMov){
-
+            if(!library.empty()) movies.push_back(createMov());
+            else cout << "You need to assign a library before you can make any movies.\n";
         } else if (choice == MainMenu::DelMov){
-
-        } else if (choice == MainMenu::Exit){
-            writeLib(movies, library);
+            movies = delMov(movies);
+        } else if (choice == MainMenu::Exit) {
+            if (!library.empty()) writeLib(movies, library);
             break;
         }
 
