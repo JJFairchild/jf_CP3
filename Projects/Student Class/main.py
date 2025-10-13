@@ -45,5 +45,40 @@ HOW TO SUBMIT:
 """
 
 class Student:
-    def __init__(self, id, name, grade):
-        
+    """Creates a class that abstracts a student"""
+
+    def __init__(self, id = 000, name = "John Doe", grade = 100):
+        """Initializes a student with optional default values"""
+        self.id = id
+        self.name = name
+        self.grade = grade
+
+    def get_grade(self):
+        """Returns the grade of a student"""
+        return self.grade
+    
+    def set_grade(self, grade):
+        """Gives a student a new grade"""
+        self.grade = grade
+    
+    def __str__(self):
+        """Allows the student object to be printed"""
+        return f"ID: {self.id}; Name: {self.name}; Grade: {self.grade}"
+    
+john = Student(1, "John Clarke", 85)
+tina = Student(2, "Tina Granger", 100)
+mark = Student(3, "Mark Challenger", 90)
+zack = Student(4, "Zack Lopez", 80)
+zoey = Student(5, "Zoey Wilson", 95)
+
+print(john)
+print(tina)
+print(mark)
+print(zack)
+print(zoey)
+
+john.set_grade(80)
+tina.set_grade(105)
+zack.set_grade(85)
+
+print(f"\nNew grades for John, Tina, and Zack:\n{john.get_grade()}\n{tina.get_grade()}\n{zack.get_grade()}")
