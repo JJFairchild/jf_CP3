@@ -71,14 +71,10 @@ mark = Student(3, "Mark Challenger", 90)
 zack = Student(4, "Zack Lopez", 80)
 zoey = Student(5, "Zoey Wilson", 95)
 
-print(john)
-print(tina)
-print(mark)
-print(zack)
-print(zoey)
+print(f"Student list:\n{john}\n{tina}\n{mark}\n{zack}\n{zoey}")
 
 john.set_grade(80)
 tina.set_grade(105)
 zack.set_grade(85)
 
-print(f"\nNew grades for John, Tina, and Zack:\n{john.get_grade()}\n{tina.get_grade()}\n{zack.get_grade()}")
+print(f"\nUpdated grades:\nJohn: {john.get_grade()}\nTina: {tina.get_grade()}\nZack: {zack.get_grade()}")
