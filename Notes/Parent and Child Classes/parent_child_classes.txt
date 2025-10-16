@@ -1,0 +1,61 @@
+
+Lesson 2: Parent and child classes
+LESSON I CAN: I CAN create objects using a class
+
+By the end of this lesson you will be able to:
+- Describe the relationship between parent and child classes
+- Create parent classes
+- Inherit into child classes
+- Read a class diagram
+- Create a class diagram
+- Overload operators
+- Create Tests for your program
+
+State Standards:
+    STRAND 5: Students will design and implement advanced object oriented concepts.
+        STANDARD 2: Implement inheritance in an object oriented program
+            -Utilize class hierarchies (parent-child relationships)
+            -Demonstrate IS-A relationships
+            -Override methods. Understand how to call the overriding method from the child
+            -Call a parent class constructor from the child's constructor
+
+    STRAND 6: Students will use Unified Modeling Language (UML) to design object-oriented programs
+        STANDARD 1: Demonstrate the use of a UML in design
+            -Create a class diagram for the class hierarchy of a program
+
+INSTRUCTIONS:
+- Notes are taken during class and can be taken on paper, on a digital document, or in a specific folder in your programming files (VS Code and Github)
+
+QUESTIONS:
+- What is a parent/abstract class?
+A class that defines the structure that other classes fall under.
+
+- How do you create a child class?
+When defining a class, put the name of the parent class in parentheses after the class name (eg. class Dog(Animal):)
+
+- How does a child class inherit from the parent class?
+In the __init__ function of the child class, you can do super().__init__(x,y,z) where x, y, and z are properties of the parent class.
+
+- What are class diagrams?
+A class diagram shows which classes inherit or are descended from which other classes.
+
+- How are class diagrams used to show a parent/child relationship?
+You draw an arrow from the child to the parent, showing that the child inherits from the parent.
+
+- How do you overload operators in a class?
+Using magic functions like __eq__ and comparing all relevant properties between self and another class.
+
+- What are test cases?
+A test case is for checking whether a portion of code works properly.
+
+- Why do we use test cases?
+Test cases are used to make sure that everything about your program still works, particularly after it's been modified.
+
+- How do we create test cases?
+Using the 'assert' statement; eg. assert x == 5 will throw an error if x is not 5.
+
+TO SUBMIT:
+    You have 3 different submission options for this assignment. You can:
+    - Type the questions and your answers in the text box provided below
+    - Type the questions and your answers on a google doc, get the share link, and submit the link as a website URL below (Please not in the textbox, there is a separate URL option) 
+    - Write out the questions and your answers on a piece of paper, or in a different program on your computer, upload the picture or completed file.
