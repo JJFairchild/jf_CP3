@@ -1,0 +1,62 @@
+Lesson 2: Abstraction
+LESSON I CAN: I CAN create abstract classes
+
+By the end of this lesson you will be able to:
+- Define Abstract classes
+- Determine WHEN to use an abstract class
+- Distinguish between abstract and concrete methods
+- Create abstract classes
+
+State Standards:
+    STRAND 5: Students will design and implement advanced object oriented concepts.
+        STANDARD 1: Implement object-oriented programs
+            - Create classes with minimal extraneous relationships (high cohesion and low coupling)
+            - Demonstrate and use composition and aggregation (HAS-A) relationships
+            - Demonstrate the use of class variables (static variables) 
+
+INSTRUCTIONS:
+- Notes are taken during class and can be taken on paper, on a digital document, or in a specific folder in your programming files (VS Code and Github)
+
+QUESTIONS:
+- Why can't you create an object from an abstract class?
+Because they are only meant to be a parent for children classes, not to be used for anything.
+
+- How do abstract classes and abstract methods work together?
+They enforce a specific layout for any child classes.
+
+- What does abc stand for?
+Abstract Class
+
+- What are decorators? 
+Decorators begin with an @ symbol and give further information about what follows.
+
+- What is an abstract method?
+An abstract method is a method that is meant to be overwritten in a child class.
+
+- What is a concrete method?
+They're methods you write normally, not with an abstractmethod decorator.
+
+- What is an abstract class?
+An abstract class is a class that's designed to be overwritten.
+
+- How do you make an abstract method?
+You have to write @abstractmethod before your method.
+
+- How can you create a class that inherits from multiple parent classes?
+In the parentheses when initializing a class, include both parent classes, separated by a comma.
+
+- Why does the inheritance order matter?
+If multiple methods have the same name, the one inheited first will be the one used when it's called.
+
+- What does the mro() method do when you call it on a class?
+It tells you which classes you inherit from first.
+
+- What is Method resolution order?
+It's the order which child classes inherit methods from parents.
+
+TO SUBMIT:
+    You have 3 different submission options for this assignment. You can:
+
+    - Type the questions and your answers in the text box provided below
+    - Type the questions and your answers on a google doc, get the share link, and submit the link as a website URL below (Please not in the textbox, there is a separate URL option) 
+    - Write out the questions and your answers on a piece of paper, or in a different program on your computer, upload the picture or completed file.
