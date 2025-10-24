@@ -50,7 +50,7 @@ from pieces import *
 
 class ChessGame:
     def __init__(self, pieces=[]):
-        self.pieces = pieces
+        self.pieces = pieces # Created a merged list of pieces rather than separating them by color because it was more convenient
 
     @staticmethod # Makes movePiece() a static method because it doesn't need self
     def movePiece(piece, position):
@@ -71,8 +71,5 @@ class ChessGame:
             if piece.color == color:
                 pieces.append(piece)
         return self.pieces
-        
-    def getPieceAt(self, position):
-        for piece in self.pieces:
-            if piece.position == position:
-                return piece
+    
+    # Moved the getPieceAt function to the ChessPiece class because it was more convenient
