@@ -48,7 +48,6 @@ HOW TO SUBMIT:
 
 """
 TODO:
-- Capture logic in movePiece()
 - Classes for other pieces
 - Display function
 - Main function
@@ -63,13 +62,14 @@ class ChessGame:
         self.pieces = pieces # Created a merged list of pieces rather than separating them by color because it was more convenient
 
     def movePiece(self, piece, position):
-        """Moves a piece to a position if it will work."""
+        """Moves a piece to a position if it will work. Also includes capture logic."""
         if piece.canMoveTo(self, position):
             target = self.getPieceAt(position)
             if target:
                 self.removePiece(target)
             piece.position = position
             return True
+        return False
 
     def removePiece(self, piece):
         """Deletes a piece from the piece list"""

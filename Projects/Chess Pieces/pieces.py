@@ -89,3 +89,6 @@ class Pawn(ChessPiece):
     def __str__(self):
         return "pawn"
     
+class Rook(ChessPiece):
+    def __init__(self, color, position):
+        super().__init__(color, position)
