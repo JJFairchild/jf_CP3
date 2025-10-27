@@ -46,23 +46,34 @@ HOW TO SUBMIT:
 - Submit your assignment link on canvas
 """
 
+"""
+TODO:
+- Capture logic in movePiece()
+- Classes for other pieces
+- Display function
+- Main function
+"""
+
 from pieces import *
 
 class ChessGame:
-    def __init__(self, pieces=[]):
+    def __init__(self, pieces=None):
+        if pieces is None:
+            pieces = []
         self.pieces = pieces # Created a merged list of pieces rather than separating them by color because it was more convenient
 
-    @staticmethod # Makes movePiece() a static method because it doesn't need self
-    def movePiece(piece, position):
+    def movePiece(self, piece, position):
         """Moves a piece to a position if it will work."""
-        if piece.canMoveTo(position):
+        if piece.canMoveTo(self, position):
+            target = self.getPieceAt(position)
+            if target:
+                self.removePiece(target)
+            piece.position = position
             return True
-        return False
 
     def removePiece(self, piece):
-        """Deletes a piece first from the piece list, then entirely."""
+        """Deletes a piece from the piece list"""
         self.pieces.remove(piece)
-        del piece
 
     def getPiecesLeft(self, color):
         """Getter function to return the list of pieces of a color"""
@@ -70,6 +81,11 @@ class ChessGame:
         for piece in self.pieces:
             if piece.color == color:
                 pieces.append(piece)
-        return self.pieces
-    
-    # Moved the getPieceAt function to the ChessPiece class because it was more convenient
+        return pieces
+        
+    def getPieceAt(self, position):
+        """Gets the piece at a given position"""
+        for piece in self.pieces:
+            if piece.position == position:
+                return piece
+        return None

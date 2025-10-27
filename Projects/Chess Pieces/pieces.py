@@ -8,18 +8,14 @@ class ChessPiece(ABC):
     # getPosition was useless because I could just use object.position
     
     def formatPosition(self):
+        """Returns the string that corresponds to a piece's coordinate"""
         alphabet = "abcdefgh"
-        return alphabet[self.position[0]] + str(self.position[1])
-    
-    def getPieceAt(self, position):
-        """Gets the piece at a given position"""
-        for piece in self.pieces:
-            if piece.position == position:
-                return piece
-        return False
-    
+        return alphabet[self.position[0] - 1] + str(self.position[1])
+
+    # Moved getPieceAt to the ChessGame class because it was more convenient
+
     @abstractmethod
-    def canMoveTo(position):
+    def canMoveTo(self, board, position):
         pass
 
     @abstractmethod
@@ -30,26 +26,61 @@ class Pawn(ChessPiece):
     def __init__(self, color, position):
         super().__init__(color, position)
 
-    def canMoveTo(self, position):
-        patpos = self.getPieceAt(position)
+    def canMoveTo(self, board, position):
+        """Returns whether a pawn can move to a given position."""
+        patpos = board.getPieceAt(position) # Piece at the position the pawn is moving to
 
-        if self.color == "w":
-            if (position[0] == self.position[0] and position[1] == self.position[1] + 1):
-                if not patpos:
+        # Ensure target square is on the board
+        if not (1 <= position[0] <= 8 and 1 <= position[1] <= 8):
+            return False
+        
+        if self.color == "w": # White's movement
+            # One square forward
+            if position == (self.position[0], self.position[1] + 1) and not patpos:
+                return True
+
+            # Two squares forward from starting rank
+            if (
+                position == (self.position[0], self.position[1] + 2)
+                and self.position[1] == 2
+                and not patpos
+                and not board.getPieceAt((self.position[0], self.position[1] + 1))
+            ):
+                return True
+
+            # Captures
+            if patpos and patpos.color == "b":
+                if position in [
+                    (self.position[0] + 1, self.position[1] + 1),
+                    (self.position[0] - 1, self.position[1] + 1),
+                ]:
                     return True
-            if patpos:
-                if patpos.color == "b" and ((position[0] == self.position[0] + 1 and position[1] == self.position[1] + 1) or (position[0] == self.position[0] - 1 and position[1] == self.position[1] + 1)):
-                    return True
-        else:
-            if (position[0] == self.position[0] and position[1] == self.position[1] - 1):
-                if not patpos:
-                    return True
-            if patpos:
-                if patpos.color == "w" and ((position[0] == self.position[0] + 1 and position[1] == self.position[1] - 1) or (position[0] == self.position[0] - 1 and position[1] == self.position[1] - 1)):
+
+        else:  # Black's movement
+            # One square forward
+            if position == (self.position[0], self.position[1] - 1) and not patpos:
+                return True
+
+            # Two squares forward from starting rank
+            if (
+                position == (self.position[0], self.position[1] - 2)
+                and self.position[1] == 7
+                and not patpos
+                and not board.getPieceAt((self.position[0], self.position[1] - 1))
+            ):
+                return True
+
+            # Captures
+            if patpos and patpos.color == "w":
+                if position in [
+                    (self.position[0] + 1, self.position[1] - 1),
+                    (self.position[0] - 1, self.position[1] - 1),
+                ]:
                     return True
         return False
 
     def getSymbol(self):
+        """Returns the symbol corresponding to a pawn."""
         if self.color == "w":
             return "♙"
         else:
@@ -57,3 +88,4 @@ class Pawn(ChessPiece):
     
     def __str__(self):
         return "pawn"
+    
