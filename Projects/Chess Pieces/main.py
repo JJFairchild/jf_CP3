@@ -48,8 +48,6 @@ HOW TO SUBMIT:
 
 """
 TODO:
-- Classes for other pieces
-- Display function
 - Main function
 """
 
@@ -75,7 +73,7 @@ class ChessGame:
         """Deletes a piece from the piece list"""
         self.pieces.remove(piece)
 
-    def getPiecesLeft(self, color):
+    def getColor(self, color): # Decided to leave this method even though it's not being used, since it WOULD be used in a version that had proper checkmating logic.
         """Getter function to return the list of pieces of a color"""
         pieces = []
         for piece in self.pieces:
@@ -89,3 +87,94 @@ class ChessGame:
             if piece.position == position:
                 return piece
         return None
+    
+    def display(self):
+        """Prints the board in a human-readable way."""
+        for x in range(8, 0, -1):  # ranks 8 → 1 (top → bottom)
+            row = str(x) + " "
+            for y in range(1, 9):  # files 1 → 8 (a → h)
+                piece = self.getPieceAt((y, x))
+                if piece:
+                    row += piece.getSymbol() + " "
+                else:
+                    row += ". "
+            print(row)
+        print("  a b c d e f g h")  # file labels
+
+
+def main():
+    board = ChessGame(
+        pieces=[
+            # White pieces
+            Rook("w", (1, 1)), Knight("w", (2, 1)), Bishop("w", (3, 1)),
+            Queen("w", (4, 1)), King("w", (5, 1)), Bishop("w", (6, 1)),
+            Knight("w", (7, 1)), Rook("w", (8, 1)),
+            Pawn("w", (1, 2)), Pawn("w", (2, 2)), Pawn("w", (3, 2)),
+            Pawn("w", (4, 2)), Pawn("w", (5, 2)), Pawn("w", (6, 2)),
+            Pawn("w", (7, 2)), Pawn("w", (8, 2)),
+
+            # Black pieces
+            Rook("b", (1, 8)), Knight("b", (2, 8)), Bishop("b", (3, 8)),
+            Queen("b", (4, 8)), King("b", (5, 8)), Bishop("b", (6, 8)),
+            Knight("b", (7, 8)), Rook("b", (8, 8)),
+            Pawn("b", (1, 7)), Pawn("b", (2, 7)), Pawn("b", (3, 7)),
+            Pawn("b", (4, 7)), Pawn("b", (5, 7)), Pawn("b", (6, 7)),
+            Pawn("b", (7, 7)), Pawn("b", (8, 7)),
+        ]
+    )
+
+    color = "w"  # White moves first
+
+    while True:
+        board.display()
+        print(f"{'White' if color == 'w' else 'Black'}'s turn")
+
+        while True:
+            # Ask for input in the form 'from to'
+            move = input("Enter your move (from to): ").strip().lower()
+            try:
+                fsquare, tsquare = move.split()
+            except ValueError:
+                print("Invalid input. Example: 'e2 e4'")
+                continue
+
+            # Convert algebraic notation to coordinates
+            alphabet = "abcdefgh"
+            try:
+                fpos = (alphabet.index(fsquare[0]) + 1, int(fsquare[1]))
+                tpos = (alphabet.index(tsquare[0]) + 1, int(tsquare[1]))
+            except (ValueError, IndexError):
+                print("Invalid square. Use a-h and 1-8.")
+                continue
+
+            # Error handling
+            piece = board.getPieceAt(fpos)
+            if not piece:
+                print("No piece at that square.")
+                continue
+            if piece.color != color:
+                print("That's not your piece.")
+                continue
+            if not piece.canMoveTo(board, tpos):
+                print("Illegal move for that piece.")
+                continue
+            break
+
+        # Capture any piece at the destination
+        target_piece = board.getPieceAt(tpos)
+        if target_piece:
+            if isinstance(target_piece, King):
+                board.pieces.remove(target_piece)
+                board.display()
+                print(f"{'White' if color == 'w' else 'Black'} wins!")
+                break
+            else:
+                board.pieces.remove(target_piece)
+
+        # Move the piece
+        piece.position = tpos
+
+        # Switch turns
+        color = "b" if color == "w" else "w"
+
+main()
