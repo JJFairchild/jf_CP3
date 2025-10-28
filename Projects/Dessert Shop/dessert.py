@@ -1,6 +1,15 @@
-class DessertItem:
-    def __init__(self, name=""):
+from abc import ABC, abstractmethod
+
+class DessertItem(ABC):
+    def __init__(self, name="", tax_percent=7.25):
         self.name = name
+    
+    @abstractmethod
+    def calculate_cost(self):
+        pass
+
+    def calculate_tax(self):
+        return self.tax_percent * self.calculate_cost()
 
 class Candy(DessertItem):
     def __init__(self, name="", weight=0.0, priceppound=0.0):

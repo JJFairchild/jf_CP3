@@ -51,6 +51,7 @@ TODO:
 - Main function
 """
 
+import os
 from pieces import *
 
 class ChessGame:
@@ -126,6 +127,7 @@ def main():
     color = "w"  # White moves first
 
     while True:
+        os.system('cls')
         board.display()
         print(f"{'White' if color == 'w' else 'Black'}'s turn")
 
