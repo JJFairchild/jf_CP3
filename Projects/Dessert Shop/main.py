@@ -136,6 +136,7 @@ HOW TO SUBMIT:
 """
 
 from dessert import *
+from tabulate import tabulate
 
 def main():
     order = Order()
@@ -147,8 +148,10 @@ def main():
     order.add(Sundae("Vanilla", 3, .69, "Hot Fudge", 1.29))
     order.add(Cookie("Oatmeal Raisin", 2, 3.45))
 
-    for i in order.orders:
-        print(i.name)
-    print(f"Number of items in order: {len(order)}")
+    data = []
+    for item in order.orders:
+        data.append([item.name, item.calculate_cost(), item.calculate_tax()])
+
+    print(tabulate(data, headers=["Name", "Price", "Tax"]))
 
 main()
