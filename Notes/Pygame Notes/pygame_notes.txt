@@ -1,0 +1,32 @@
+INSTRUCTIONS:
+- Notes are taken during class and can be taken on paper, on a digital document, or in a specific folder in your programming files (VS Code and Github)
+
+QUESTIONS:
+- How do you set up pygame?
+put 'import pygame' and 'run pygame.init()' at the beginning of your code.
+
+- What is the purpose of the "While running" loop?
+To continue displaying and refreshing the screen until the window is closed.
+
+- How do you create a screen in pygame?
+Make a variable like this: screen = pygame.display.set_mode((xsize, ysize))
+
+- How are objects placed on the screen in pygame?
+Using pygame.draw.{a shape}()
+
+- What events can I listen for in pygame? What do those events do?
+You can listen for when the close window button is used, or when keys on the keyboard are pressed.
+
+- How can I detect collision with pygame?
+
+
+- How do you add sounds in pygame?
+
+ 
+
+TO SUBMIT:
+    You have 3 different submission options for this assignment. You can:
+
+    - Type the questions and your answers in the text box provided below
+    - Type the questions and your answers on a google doc, get the share link, and submit the link as a website URL below (Please not in the textbox, there is a separate URL option) 
+    - Write out the questions and your answers on a piece of paper, or in a different program on your computer, upload the picture or completed file.
