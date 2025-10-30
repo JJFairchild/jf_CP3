@@ -5,6 +5,8 @@ def Candy_set():
     assert c.name == ""
     assert c.weight == 0.0
     assert c.priceppound == 0.0
+    assert c.calculate_cost() == 0.0
+    assert c.calculate_tax() == 0.0
 
     c2 = Candy("Chocolate", 1.5, 2.99)
     assert c2.name == "Chocolate"

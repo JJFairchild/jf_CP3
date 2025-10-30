@@ -5,6 +5,8 @@ def Cookie_set():
     assert ck.name == ""
     assert ck.ccount == 0
     assert ck.pricepdozen == 0.0
+    assert ck.calculate_cost() == 0.0
+    assert ck.calculate_tax() == 0.0
 
     ck2 = Cookie("Chocolate Chip", 12, 5.99)
     assert ck2.name == "Chocolate Chip"

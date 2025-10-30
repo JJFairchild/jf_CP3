@@ -62,10 +62,10 @@ class Order:
         cost = 0.0
         for order in self.orders:
             cost += order.calculate_cost()
-        return cost
+        return round(cost, 2)
     
     def order_tax(self):
         tax = 0.0
         for order in self.orders:
             tax += order.calculate_tax()
-        return tax
+        return round(tax, 2)

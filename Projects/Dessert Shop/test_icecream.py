@@ -5,6 +5,8 @@ def IceCream_set():
     assert i.name == ""
     assert i.scount == 0
     assert i.pricepscoop == 0.0
+    assert i.calculate_cost() == 0.0
+    assert i.calculate_tax() == 0.0
 
     i2 = IceCream("Vanilla", 3, 1.25)
     assert i2.name == "Vanilla"

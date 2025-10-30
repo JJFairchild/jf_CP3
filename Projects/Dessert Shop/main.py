@@ -138,20 +138,111 @@ HOW TO SUBMIT:
 from dessert import *
 from tabulate import tabulate
 
-def main():
-    order = Order()
+def getString(message):
+    while True:
+        string = input(message)
+        if len(string) != 0:
+            return string
+        else:
+            print("You have to type something. Try again.")
 
-    order.add(Candy("Candy Corn", 1.5, .25))
-    order.add(Candy("Gummy Bears", .25, .35))
-    order.add(Cookie("Chocolate Chip", 6, 3.99))
-    order.add(IceCream("Pistachio", 2, .79))
-    order.add(Sundae("Vanilla", 3, .69, "Hot Fudge", 1.29))
-    order.add(Cookie("Oatmeal Raisin", 2, 3.45))
+def getFloat(message):
+    while True:
+        num = input(message)
+        try:
+            fl = float(num)
+            if fl >= 0.0:
+                return fl
+            else:
+                print("You have to input a positive float. Try again.")
+        except:
+            print("Invalid input. Try again.")
+
+class DessertShop:
+    def user_prompt_candy(self):
+        return Candy(
+            getString("What is the name of the candy?: "),
+            getFloat("How many pounds of candy are you buying?: "),
+            getFloat("How much does that candy cost per pound?: ")
+        )
+
+    def user_prompt_cookie(self):
+        return Cookie(
+            getString("What is the name of the cookie?: "),
+            getFloat("How many cookies are you buying?: "),
+            getFloat("How much do those cookies cost per dozen?: ")
+        )
+
+    def user_prompt_icecream(self):
+        return IceCream(
+            getString("What is the name of the ice cream?: "),
+            getFloat("How many scoops of ice cream are you buying?: "),
+            getFloat("How much does that ice cream cost per scoop?: ")
+        )
+
+    def user_prompt_sundae(self):
+        return Sundae(
+            getString("What is the name of the ice cream?: "),
+            getFloat("How many scoops of ice cream are you buying?: "),
+            getFloat("How much does that ice cream cost per scoop?: "),
+            getString("What is the name of the topping?: "),
+            getFloat("How much does that topping cost?: "),
+        )
+
+def main():
+    shop = DessertShop()
+    order = Order()
+    '''
+    order.add(Candy('Candy Corn', 1.5, 0.25))
+    order.add(Candy('Gummy Bears', 0.25, 0.35))
+    order.add(Cookie('Chocolate Chip', 6, 3.99))
+    order.add(IceCream('Pistachio', 2, 0.79))
+    order.add(Sundae('Vanilla', 3, 0.69, 'Hot Fudge', 1.29))
+    order.add(Cookie('Oatmeal Raisin', 2, 3.45))
+    '''
+    done: bool = False
+    # build the prompt string once
+    prompt = '\n'.join([ '\n',
+        '1: Candy',
+        '2: Cookie',
+        '3: Ice Cream',
+        '4: Sundae',
+        '\nWhat would you like to add to the order? (1-4, Enter for done): '
+    ])
+    while not done:
+        choice = input(prompt)
+        match choice:
+            case '':
+                done = True
+            case '1':
+                item = shop.user_prompt_candy()
+                order.add(item)
+                print(f'{item.name} has been added to your order.')
+            case '2':
+                item = shop.user_prompt_cookie()
+                order.add(item)
+                print(f'{item.name} has been added to your order.')
+            case '3':
+                item = shop.user_prompt_icecream()
+                order.add(item)
+                print(f'{item.name} has been added to your order.')
+            case '4':
+                item = shop.user_prompt_sundae()
+                order.add(item)
+                print(f'{item.name} has been added to your order.')
+            case _:
+                print('Invalid response: Please enter a choice from the menu (1-4) or Enter')
+    print()
 
     data = []
     for item in order.orders:
         data.append([item.name, item.calculate_cost(), item.calculate_tax()])
 
     print(tabulate(data, headers=["Name", "Price", "Tax"]))
+    print(tabulate([
+        ["Order Subtotals", order.order_cost(), order.order_tax()],
+        ["Order Total:", "", order.order_cost() + order.order_tax()],
+        ["Total Items in the order:", "", len(order.orders)]
+        ]))
 
 main()

@@ -7,6 +7,8 @@ def Sundae_set():
     assert s.pricepscoop == 0.0
     assert s.tname == ""
     assert s.tprice == 0.0
+    assert s.calculate_cost() == 0.0
+    assert s.calculate_tax() == 0.0
 
     s2 = Sundae("Chocolate", 2, 1.50, "Hot Fudge", 0.75)
     assert s2.name == "Chocolate"
