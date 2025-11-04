@@ -13,8 +13,8 @@ pygame.display.set_caption("Space Invaders")
 icon = pygame.image.load("Notes/Pygame Notes/Resources/ufo.png")
 pygame.display.set_icon(icon)
 
-#bg = pygame.image.load("Notes/Pygame Notes/Resources/background.jpg")
-#bg = pygame.transform.scale(bg, (800,600))
+bg = pygame.image.load("Notes/Pygame Notes/Resources/background.jpg")
+bg = pygame.transform.scale(bg, (800,600))
 sfont = pygame.font.Font("freesansbold.ttf", 32)
 lfont = pygame.font.Font("freesansbold.ttf", 64)
 
@@ -103,6 +103,7 @@ for _ in range(6):
         random.randint(0, 236)
     ))
 bullet = Bullet(player.x)
+game_over = False
 
 def restart(enemies):
     # If the player kills all the enemies, this spawns a new wave
@@ -113,7 +114,6 @@ def restart(enemies):
                 random.randint(0, 236)
             ))
     return enemies
-
 
 running = True
 while running:
@@ -153,23 +153,26 @@ while running:
     enemies = restart(enemies)
 
     # Move things
-    player.move()
-    for enemy in enemies:
-        enemy.move()
-        if enemy.lose():
-            enemies = []
-            lose = lfont.render("GAME OVER", True, (255, 255, 255))
-            screen.blit(lose, (200, 150))
-    bullet.move()
+    if not game_over:
+        player.move()
+        for enemy in enemies:
+            enemy.move()
+            if enemy.lose():
+                enemies = []
+                game_over = True
+        bullet.move()
 
     # Display things
     screen.fill((0,0,0))
-    #screen.blit(bg)
+    screen.blit(bg)
     score = sfont.render(f"Score: {player.score}", True, (255, 255, 255))
     screen.blit(score, (10,10))
     player.show()
     for enemy in enemies:
         enemy.show()
     bullet.show()
+    if game_over:
+        lose = lfont.render("GAME OVER", True, (255, 255, 255))
+        screen.blit(lose, (200, 150))
     
     pygame.display.flip() # Refresh display

@@ -18,10 +18,10 @@ Using pygame.draw.{a shape}()
 You can listen for when the close window button is used, or when keys on the keyboard are pressed.
 
 - How can I detect collision with pygame?
-
+Use the distance formula (sqrt((x2-x1)^2+(y2-y1)^2)) and check if it's smaller than a value (in pixels).
 
 - How do you add sounds in pygame?
-
+Import the pygame mixer (from pygame import mixer), then load the music with "mixer.music.load({relative path of music})", then play it with "mixer.music.play({how many times the music should repeat}), or make sounds with "soundname = mixer.Sound({relative path})" and play it with "soundname.play()".
  
 
 TO SUBMIT:
