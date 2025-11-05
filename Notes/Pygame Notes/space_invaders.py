@@ -17,6 +17,7 @@ bg = pygame.image.load("Notes/Pygame Notes/Resources/background.jpg")
 bg = pygame.transform.scale(bg, (800,600))
 sfont = pygame.font.Font("freesansbold.ttf", 32)
 lfont = pygame.font.Font("freesansbold.ttf", 64)
+rfont = pygame.font.Font("freesansbold.ttf", 32)
 
 mixer.music.load("Notes/Pygame Notes/Resources/background.wav")
 mixer.music.play(-1)
@@ -24,11 +25,32 @@ mixer.music.play(-1)
 laser = mixer.Sound("Notes/Pygame Notes/Resources/laser.wav")
 explosion = mixer.Sound("Notes/Pygame Notes/Resources/explosion.wav")
 
+class Button:
+    def __init__(self, x, y, scale):
+        self.x = x
+        self.y = y
+        self.img = pygame.image.load("Notes/Pygame Notes/Resources/button.png")
+        self.img = pygame.transform.scale(self.img, (int(self.img.get_width()*scale), int(self.img.get_height()*scale)))
+        self.rect = self.img.get_rect()
+        self.scale = scale
+    
+    def draw(self):
+        screen.blit(self.img, (self.x, self.y))
+    
+    def click(self):
+        self.rect.topleft = (self.x, self.y)
+        pos = pygame.mouse.get_pos()
+        if self.rect.collidepoint(pos) and pygame.mouse.get_pressed()[0]:
+            return True
+        return False
+        
+
+
 class Bullet:
     def __init__(self, x):
         self.x = x + 16
         self.y = 500
-        self.speed = -.4
+        self.speed = -.5
         self.state = "r"
         self.img = pygame.image.load("Notes/Pygame Notes/Resources/bullet.png")
         self.img = pygame.transform.rotate(self.img, 90)
@@ -97,23 +119,26 @@ class Enemy:
 
 player = Player()
 enemies = []
-for _ in range(6):
-    enemies.append(Enemy(
-        random.randint(0, 736), 
-        random.randint(0, 236)
-    ))
+
+enemies.append(Enemy(
+    random.randint(0, 736), 
+    random.randint(0, 236)
+    )
+)
 bullet = Bullet(player.x)
 game_over = False
+level = 1
 
-def restart(enemies):
+def reset(enemies, level):
     # If the player kills all the enemies, this spawns a new wave
     if enemies == []:
-        for _ in range(6):
+        level += 1
+        for _ in range(level):
             enemies.append(Enemy(
                 random.randint(0, 736), 
                 random.randint(0, 236)
             ))
-    return enemies
+    return enemies, level
 
 running = True
 while running:
@@ -133,7 +158,7 @@ while running:
             if keys[pygame.K_RIGHT]:
                 player.speed = .2
             if keys[pygame.K_UP]:
-                if bullet.state == "r":
+                if bullet.state == "r" and game_over == False:
                     laser.play()
                     bullet = Bullet(player.x)
                     bullet.state = "f"
@@ -150,7 +175,8 @@ while running:
             bullet.y = 500
             del enemies[i]
 
-    enemies = restart(enemies)
+    if not game_over:
+        enemies, level = reset(enemies, level)
 
     # Move things
     if not game_over:
@@ -160,6 +186,8 @@ while running:
             if enemy.lose():
                 enemies = []
                 game_over = True
+                level = 0
+                player.score = 0
         bullet.move()
 
     # Display things
@@ -174,5 +202,10 @@ while running:
     if game_over:
         lose = lfont.render("GAME OVER", True, (255, 255, 255))
         screen.blit(lose, (200, 150))
+
+        button = Button(200, 250, 0.1)
+        button.draw()
+        if button.click():
+            game_over = False
     
     pygame.display.flip() # Refresh display
