@@ -1,0 +1,15 @@
+INSTRUCTIONS:
+    For this assignment you are going to turn in 1-2 paragraphs describing the program you plan to build for your unit final. Keeping in mind that the code must be submitted the class period BEFORE finals begin. You will have approximately 4 1/2 weeks in 
+    class to work on this project. It needs to be written in Python with an emphasis on OBJECT ORIENTED PROGRAMMING. Meaning you need to be using classes and objects, and you should be minimizing redundant code. 
+
+    Your paragraph needs to include:
+
+    1. What the project is
+    2. A list of bare minimum requirements to have a working product 
+    3. Parts of the project you plan to include past the bare minimum
+    4. Why you want to build this project
+
+
+For the final project, I want to build Infinite Minesweeper. In order to do this, I will need to use pygame to display a series of tiles that can be toggled between several states. I will need to implement proper Minesweeper logic, such as tile revealing
+and random tile generation. Ideally, I will use the mouse for all controls: Right click + drag to pan, scroll wheel to zoom, left click to reveal a tile, and middle click to place a flag. I also want to implement a leaderboard system by tracking how many
+tiles the user reveals before they blow up. I have wanted to build a working Infinite Minesweeper for a long time, and I think it would be really interesting to find the proper logic that allows me to do things like pan, zoom, and infinite generation.
