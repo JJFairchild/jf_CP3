@@ -1,0 +1,34 @@
+INSTRUCTIONS:
+Notes are taken during class and can be taken on paper, on a digital document, or in a specific folder in your programming files (VS Code and Github)
+
+QUESTIONS:
+- What is time complexity in programming?
+Time complexity is identical to "big O notation", which is the worst possible case of the completion of a task (aka the longest it can take to do the task).
+
+- What are the levels of time complexity?
+O(1) is called constant complexity, meaning no matter the size of your data, it will take exactly one step to find a particular item. O(n) is called linear complexity, meaning there is a direct correlation between the size of your data and how long it takes to find a particular item. O(n log(n)) is called logarithmic complexity, so there is a logarithmic correlation between the size of your data and how long it takes to find an item. Most sorting algorithms lie here. O(n^2) is called quadratic complexity, so there is a quadratic (x^2) relationship between the size of your data and how long it takes to find an item. This method is very inefficient.
+
+- What is a stack?
+It's a type of list where all items but the last are protected and cannot be modified or removed.
+
+- What does LIFO stand for?
+LIFO stands for "last in, first out", which is the way that items are removed from stacks.
+
+- What are the things that a stack can do?
+You can add an item to the stack, you can remove an item from the stack, you can look at the last item in the stack, you can see how large the stack is, and you can see if the stack is empty.
+
+- How are stacks normally written in python?
+They are written with a class because there is not a default Stack object.
+
+- What is a queue?
+It's a type of list that follows FIFO (first in, first out) logic, with all of the items but the first protected from modification or removal.
+
+- How are queues different from stacks?
+Rather than the last item being unprotected (in stacks), the first item is unprotected instead.
+
+TO SUBMIT:
+    You have 3 different submission options for this assignment. You can:
+
+    - Type the questions and your answers in the text box provided below
+    - Type the questions and your answers on a google doc, get the share link, and submit the link as a website URL below (Please not in the textbox, there is a separate URL option) 
+    - Write out the questions and your answers on a piece of paper, or in a different program on your computer, upload the picture or completed file.
